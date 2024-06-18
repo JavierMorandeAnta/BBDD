@@ -26,4 +26,14 @@ for $i in //ARTISTA
 return replace node $i with 
 <ARTISTA>{upper-case($i)}</ARTISTA>
 
+:Pero podemos hacerlo solo el valor del nodo (Modificar el contenido), no el nodo entero:
+
+for $i in //ARTISTA
+return replace value of node $i with 
+fn:upper-case($i/text())
+
+
+
+
+
 
