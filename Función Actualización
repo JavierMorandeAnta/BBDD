@@ -38,5 +38,5 @@ declare function local:transformar($cd as element())
     return $c
 };
 
-for $CD in /CATALOG/CD[YEAR = 1995]
+for $CD in /CATALOG/CD[YEAR = 1995]   <---- Aqui le especificamos el año del disco
 return local:transformar($CD)
