@@ -1,3 +1,15 @@
-:Tras haber insertado el disco 'Mi carro'
+:Tras haber insertado el disco 'Mi carro':
+
+insert nodes <CD>
+    <TITLE> Mi Carro </TITLE>
+    <ARTIST>Manolo Escobar</ARTIST>
+    <COUNTRY> ESPAÑA </COUNTRY>
+    <COMPANY> </COMPANY>
+    <PRICE> 3 </PRICE>
+    <YEAR> 1991 </YEAR>
+  </CD>
+as first into /CATALOG
+
+:Remplazamos para que ARTIST sea ARTISTA:
 
 replace node //CD[1]/ARTIST with <ARTISTA>'Manolo Escobar'</ARTISTA> 
