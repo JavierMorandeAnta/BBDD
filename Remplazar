@@ -16,6 +16,14 @@ replace node //CD[1]/ARTIST with <ARTISTA>'Manolo Escobar'</ARTISTA>
 
 :Remplazemos todos y ademas guardemos su contenido:
 
-for $i in//ARTIST return 
-replace node $i with 
-<ARTISTA>{($i/text())}</ARTISTA> 
+for $i in//ARTIST 
+return replace node $i with 
+<ARTISTA>{($i/text())}</ARTISTA>
+
+:Ahora podemos poner todos los Artistas en mayusculas:
+
+for $i in //ARTISTA
+return replace node $i with 
+<ARTISTA>{upper-case($i)}</ARTISTA>
+
+
