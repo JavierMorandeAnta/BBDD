@@ -7,3 +7,36 @@ declare updating function local:renameNode($elem as element(), $rep as xs:string
 
 for $PAIS in //COUNTRY
 return local:renameNode($PAIS, "PAÍS") 
+
+:De esta manera podemos hacer trasformaciones selecionaremos donde este TAYLOR SWIFT :
+
+copy $c := /CATALOG
+modify (
+    for $cd in $c/CD
+    return (
+        if ($cd/ARTISTA = "TAYLOR SWIFT") then
+            delete node $cd/ARTISTA
+        else (),
+        for $node in $cd/*[not(self::TITULO or self::ARTISTA)]
+        return delete node $node
+    )
+)
+return $c 
+
+:Borramos las etiquetas que no queremos y dejamos solo titulo y artista remplazando 'Eros Ramazzotti' por otra:
+
+declare function local:transformar($cd as element())
+{
+    copy $c := $cd
+    modify (
+        delete nodes $c/PAÍS,
+        delete nodes $c/COMPANY,
+        delete nodes $c/PRICE,
+        delete nodes $c/YEAR,
+        replace value of node $c/ARTIST[text()='Eros Ramazzotti'] with "El primero que pase por ahí"
+    )
+    return $c
+};
+
+for $CD in /CATALOG/CD[YEAR = 1995]
+return local:transformar($CD)
