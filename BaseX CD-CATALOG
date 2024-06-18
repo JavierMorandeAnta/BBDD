@@ -1,0 +1,4 @@
+
+
+insert nodes <A1985>Hermano de 1985</A1985> after 
+//YEAR[./text()='1985']
