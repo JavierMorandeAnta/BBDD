@@ -29,7 +29,7 @@ declare function local:transformar($cd as element())
 {
     copy $c := $cd
     modify (
-        delete nodes $c/PAÍS,
+        delete nodes $c/PAÍS,   <--- Hay que revisar el nombre de las etiquetas
         delete nodes $c/COMPANY,
         delete nodes $c/PRICE,
         delete nodes $c/YEAR,
