@@ -1,0 +1,9 @@
+:Asi podremos hacerlo con todos los "COUNTRY" para cambiarlos a "PAÌS":
+
+declare updating function local:renameNode($elem as element(), $rep as xs:string)
+{
+    rename node $elem as $rep
+};
+
+for $PAIS in //COUNTRY
+return local:renameNode($PAIS, "PAÍS") 
