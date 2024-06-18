@@ -1,0 +1,3 @@
+:Tras haber insertado el disco 'Mi carro'
+
+replace node //CD[1]/ARTIST with <ARTISTA>'Manolo Escobar'</ARTISTA>
