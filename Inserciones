@@ -19,13 +19,18 @@ as first into /CATALOG     <---- Esto lo incluira el primero en los CATALOG
 :Insertaremos un nuevo artista a este disco:
 
 insert nodes 
-<ARTIST>Taylor swift</ARTIST>
+<ARTIST>Taylor Swift</ARTIST>
 before //ARTIST[text()='Manolo Escobar'] <---- Cuidado al buscar la condicion ya que es sensible a los espacios
 
 :Borremos a Taylor Swift:
 
-delete nodes 
-//ARTIST[../ARTIST[(text()='Manolo Escobar')]] <--- Esto borrara todo donde este Manolo incluido el
+delete nodes //ARTIST[text()='Taylor Swift']
+
+
+
+
+
+
 
 
 
