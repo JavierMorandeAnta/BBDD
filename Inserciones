@@ -3,5 +3,30 @@
 insert nodes <A1985>Hermano de 1985</A1985> after 
 //YEAR[./text()='1985']
 
+:Ahora insertaremos un disco nuevo entero y lo colocamos en primera posición:
+
+insert nodes <CD>
+    <TITLE> Mi Carro </TITLE>
+    <ARTIST>Manolo Escobar</ARTIST>
+    <COUNTRY> ESPAÑA </COUNTRY>
+    <COMPANY> </COMPANY>
+    <PRICE> 3 </PRICE>
+    <YEAR> 1991 </YEAR>
+  </CD>
+as first into /CATALOG     <---- Esto lo incluira el primero en los CATALOG
+
+
+:Insertaremos un nuevo artista a este disco:
+
+insert nodes 
+<ARTIST>Taylor swift</ARTIST>
+before //ARTIST[text()='Manolo Escobar'] <---- Cuidado al buscar la condicion ya que es sensible a los espacios
+
+:Borremos a Taylor Swift:
+
+delete nodes 
+//ARTIST[../ARTIST[(text()='Manolo Escobar')]] <--- Esto borrara todo donde este Manolo incluido el
+
+
 
 
