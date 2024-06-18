@@ -13,3 +13,9 @@ as first into /CATALOG
 :Remplazamos para que ARTIST sea ARTISTA:
 
 replace node //CD[1]/ARTIST with <ARTISTA>'Manolo Escobar'</ARTISTA> 
+
+:Remplazemos todos y ademas guardemos su contenido:
+
+for $i in//ARTIST return 
+replace node $i with 
+<ARTISTA>{($i/text())}</ARTISTA> 
