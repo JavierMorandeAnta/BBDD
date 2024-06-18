@@ -32,6 +32,9 @@ for $i in //ARTISTA
 return replace value of node $i with 
 fn:upper-case($i/text())
 
+:Asi solo cambiaremos en nombre de la etiqueta:
+
+rename node //TITLE as 'Título'
 
 
 
