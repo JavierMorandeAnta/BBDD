@@ -1,0 +1,37 @@
+:Comandos basicos para desplazarse:
+
+mysql -u root -p;   <---- Para entrar en la base de datos con el nombre y usuario 
+desc information_schema.tables; <--- Nos mostrara todo el diccionario 
+SHOW TABLES; <---- Te mostrara todas las tablas de esa BBDD
+use "";   <--- Entra en la tabla
+desc ""; <--- Te describe que tablas hay 
+
+:Descargamos XAMPP y creamos 6 columnas con el nombre students:
+
+:Abrimos la consola de comandos para realizar la inserccion:
+
+INSERT INTO students VALUES (null,'Roberto Nuñez',21,'M',now(),'Calle Arcos de Jalón');
+
+:Podemos ver las columnas que tiene desde information_schema:
+
+MariaDB [information_schema]> SELECT COLUMN_NAME, ORDINAL_POSITION, DATA_TYPE 
+                              FROM COLUMNS WHERE TABLE_NAME='STUDENTS';
+
+:Las restricciones y la clave primaria de STUDENTS:
+
+MariaDB [information_schema]> desc table_constraints; <--- Para poder ver las restricciones de la tabla
+
+MariaDB [information_schema]> SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+	                            FROM TABLE_CONSTRAINTS
+	                            WHERE TABLE_NAME='STUDENTS';
+
+:O las distintas BBDD que contiene:
+
+MariaDB [information_schema]> SELECT SCHEMA_NAME 
+                              FROM SCHEMATA;
+
+
+
+
+
+
