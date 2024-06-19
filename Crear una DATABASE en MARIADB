@@ -5,15 +5,22 @@ CREATE DATABASE ifct0310;
 USE ifct0310;
 CREATE TABLE MODULO (CODIGO VARCHAR(10) PRIMARY KEY
 					,TITULO VARCHAR (100) NOT NULL);
-CREATE TABLE UF 	(CODIGO VARCHAR(10) PRIMARY KEY
+CREATE TABLE UF     (CODIGO VARCHAR(10) PRIMARY KEY
 					,TITULO VARCHAR (100) NOT NULL
 					,MODULO VARCHAR (10) NOT NULL
 					,FOREIGN KEY (MODULO) REFERENCES MODULO (CODIGO));
 INSERT INTO MODULO VALUES ('MF0224_3','ADMINISTRACION DE SGBDs');
-INSERT INTO UF 	   VALUES ('UF1468','ALMACENAMIENTO DE LA INFORMACION E INTRODUCCIÓN A LOS SGBD','MF0224_3'),
+INSERT INTO UF 	   VALUES 			              ('UF1468','ALMACENAMIENTO DE LA INFORMACION E INTRODUCCIÓN A LOS SGBD','MF0224_3'),
 						              ('UF1469','SGBD E INSTALACIÓN','MF0224_3'),
 						              ('UF1470','ADMINISTRACIÓN Y MONITORIZACIÓN DE LOS SGBD','MF0224_3');
 
-:Podemos guardarlo en un blog de notas y mas tarde cargarlo con este comando:
+:Podemos guardarlo en un blog de notas "ifct0310.sql" y mas tarde cargarlo con este comando: 
 
-source ifct0310.sql
+source ifct0310.sql <---- deberemos añadir la ruta si no lo guardamos en /XAMPP/MYSQL/BIN
+
+:Consultamos la integridad referencial:
+
+
+
+
+
