@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LibroAbuela>
+	<recetas>
+		<receta id="r_1" dificultad="Facil">
+			<tituloreceta> Macarroneh con Queso </tituloreceta>
+			<descripcion> Un Macarron y Queso </descripcion>
+			<ingredientes>
+				<ingrediente>
+					<nombre>Macarrones</nombre>
+					<cantidad> 5000 </cantidad>
+					<unidad> Kilo </unidad>
+				</ingrediente>
+				<ingrediente>
+					<nombre>Queso</nombre>
+					<cantidad> 3000 </cantidad>
+					<unidad> Polvitos </unidad>
+				</ingrediente>
+			</ingredientes>
+			<instrucciones>
+				<instruccion id="i_1"> Compra Macarrones </instruccion>
+				<instruccion id="i_2"> Compra Queso </instruccion>
+				<instruccion id="i_3" telefono="619385005"> Llama a tu Abuela </instruccion>
+			</instrucciones>
+			<tiempopreparacion unidad="segundos"> 60
+			</tiempopreparacion>
+			<tiempococcion unidad="segundos"> 2
+			</tiempococcion>
+		</receta>
+	</recetas>
+</LibroAbuela>
