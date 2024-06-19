@@ -18,8 +18,19 @@ INSERT INTO UF 	   VALUES 			              ('UF1468','ALMACENAMIENTO DE LA INFOR
 
 source ifct0310.sql <---- deberemos añadir la ruta si no lo guardamos en /XAMPP/MYSQL/BIN
 
-:Consultamos la integridad referencial:
+:Consultamos la integridad referencial y econtramos la clave foranea:
 
+MariaDB [ifct0310]> SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+		    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+		    WHERE TABLE_NAME='UF';
+
+:Podemos observar con este comando las relaciones de esa clave que acabamos de encontrar:
+
+MariaDB [ifct0310]> SELECT COLUMN_NAME
+		    	,REFERENCED_TABLE_NAME
+			,REFERENCED_COLUMN_NAME
+		    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+		    WHERE CONSTRAINT_NAME='uf_ibfk_1';
 
 
 
