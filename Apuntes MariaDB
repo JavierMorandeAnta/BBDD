@@ -21,7 +21,11 @@ MariaDB [information_schema]> SELECT COLUMN_NAME, ORDINAL_POSITION, DATA_TYPE
 
 MariaDB [information_schema]> desc table_constraints; <--- Para poder ver las restricciones de la tabla
 
-MariaDB [information_schema]> desc table_constraints;
+MariaDB [information_schema]> SELECT COLUMN_NAME
+                              FROM KEY_COLUMN_USAGE
+                              WHERE TABLE_NAME='STUDENTS'
+                              AND CONSTRAINT_NAME='PRIMARY';
+
 :O las distintas BBDD que contiene:
 
 MariaDB [information_schema]> SELECT SCHEMA_NAME 
