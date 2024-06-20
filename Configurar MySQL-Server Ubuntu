@@ -52,5 +52,9 @@ sudo ufw allow from remote_IP_address to any port 3306  <--- donde el ip address
 
 mysql -u user -h database_server_ip -p  
 
+:Se puede hacer esto mismo desde MYSQL shell tras descargarlo en la consola:
+
+\connect 'pym'@'ip_servidor_remoto'
+
 
 
