@@ -56,6 +56,9 @@ mysql -u user -h database_server_ip -p
 
 \connect 'pym'@'ip_servidor_remoto'
 
+:Ver los que estan conectados:
+
+Select user,host from mysql.user order by 1;
 
 
 
