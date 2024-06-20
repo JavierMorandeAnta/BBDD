@@ -1,0 +1,17 @@
+:Instalar MYSQL:
+
+sudo apt install mysql-server
+
+:Entrar en el mismo:
+
+ sudo systemctl start mysql.service   <---- lo inicimos
+
+systemctl status mysql <----- comprobamos el estado del mismo
+
+sudo mysql -u root -p 
+
+:
+
+mysql>
+
+
