@@ -48,17 +48,9 @@ bind-address            = 0.0.0.0  <--- modificamos esta parte
 
 CREATE USER 'pym'@'ip_servidor_remoto' IDENTIFIED BY 'password';  <--- creamos un nuevo usuario remoto, sustituimos el nombre y el password.
 
+sudo ufw allow from remote_IP_address to any port 3306  <--- donde el ip address es la direccion de ip del usuario anterior
 
-
-
-
-
-
-
-
-
-
-
+mysql -u user -h database_server_ip -p  
 
 
 
