@@ -4,7 +4,7 @@ sudo apt install mysql-server
 
 :Entrar en el mismo:
 
- sudo systemctl start mysql.service   <---- lo inicimos
+sudo systemctl start mysql.service   <---- lo inicimos
 
 systemctl status mysql <----- comprobamos el estado del mismo
 
@@ -55,6 +55,8 @@ mysql -u user -h database_server_ip -p
 :Se puede hacer esto mismo desde MYSQL shell tras descargarlo en la consola:
 
 \connect 'pym'@'ip_servidor_remoto'
+
+
 
 
 
