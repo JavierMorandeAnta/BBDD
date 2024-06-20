@@ -14,8 +14,43 @@ sudo mysql -u root -p
 
 mysql> source ifct0310.sql <---- indicando la ruta del arvicho
 
-:
+:Configurar cuestiones seguridad:
 
-mysql> 
+mysql> ALTER USER 'root'@'localhost'
+       IDENTIFIED WITH mysql_native_password BY 'password'; <--- le damos una contraseña a el usuario root
+
+mysql> sudo mysql_secure_installation <--- instalamos el modo seguro
+
+:Tras realizarlo nos pedira adjuntar una nueva contraseña con su nivel de fortaleza:
+
+There are three levels of password validation policy:
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary file
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2
+
+:Creamos un usuario y lo administramos:
+
+CREATE USER 'username'@'host' IDENTIFIED BY 'password'; <--- los campos deben ir señalados del nombre del usuario y el lugar donde se conecte y la clave que use
+
+GRANT PRIVILEGE ON database.table TO 'username'@'host'; <--- otorgamos privilegios
+
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, INDEX, DELETE, SELECT, REFERENCES, RELOAD on *.* TO ''@'localhost' WITH GRANT OPTION;
+
+SHOW VARIABLES like 'validate_password%'; <--- poder que nivel tiene la clave
+
+:Como activar conexiones remotas:
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf   <-- puede ser que el archivo no este ahi
+
+# localhost which is more compatible and is not less secure. <--- buscamos esto en el documento
+bind-address            = 0.0.0.0  <--- modificamos esta parte 
+
+
+
+
+
+
+
 
 
