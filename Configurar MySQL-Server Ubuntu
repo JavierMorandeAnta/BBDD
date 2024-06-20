@@ -46,6 +46,12 @@ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf   <-- puede ser que el archivo no e
 # localhost which is more compatible and is not less secure. <--- buscamos esto en el documento
 bind-address            = 0.0.0.0  <--- modificamos esta parte 
 
+CREATE USER 'pym'@'ip_servidor_remoto' IDENTIFIED BY 'password';  <--- creamos un nuevo usuario remoto, sustituimos el nombre y el password.
+
+
+
+
+
 
 
 
