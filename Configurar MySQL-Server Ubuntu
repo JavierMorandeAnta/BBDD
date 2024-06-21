@@ -54,7 +54,7 @@ mysql -u user -h database_server_ip -p
 
 :Se puede hacer esto mismo desde MYSQL shell tras descargarlo en la consola:
 
-\connect 'pym'@'ip_servidor_remoto'
+\connect 'pym'@'ip_servidor_remoto' <--- Hay que retirar las comillas.
 
 :Ver los que estan conectados:
 
