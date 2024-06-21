@@ -1,0 +1,11 @@
+:Sentencia tabla de prueba estudiantes:
+
+CREATE TABLE `STUDENTS` (
+    `stu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Esta columna es la clave primaria con un auto incremental.',
+    `stu_name` varchar(25) NOT NULL,
+    `age` int(11) NOT NULL,
+    `gender` char(1) NOT NULL,
+    `doa` date NOT NULL,
+    `address` varchar(20) NOT NULL,
+    PRIMARY KEY (`stu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp850 COLLATE=cp850_general_ci;
