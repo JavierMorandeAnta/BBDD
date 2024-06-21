@@ -4,6 +4,8 @@ CREATE DATABASE `school`
     DEFAULT CHARACTER SET cp850
     DEFAULT COLLATE cp850_general_ci;
 
+USE school <--- para usar la nueva Database
+
 :Sentencia tabla de prueba estudiantes:
 
 CREATE TABLE `STUDENTS` (
