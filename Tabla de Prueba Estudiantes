@@ -1,3 +1,9 @@
+:Crear la DataBase:
+
+CREATE DATABASE `school`
+    DEFAULT CHARACTER SET cp850
+    DEFAULT COLLATE cp850_general_ci;
+
 :Sentencia tabla de prueba estudiantes:
 
 CREATE TABLE `STUDENTS` (
