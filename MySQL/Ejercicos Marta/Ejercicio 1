@@ -1,0 +1,5 @@
+/* Mostrar detalles de la tabla jobs en la que el salario minimo es superior a 10000. */
+
+Select *
+from jobs
+where min_salary > 10000;
