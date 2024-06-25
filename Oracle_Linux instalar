@@ -13,3 +13,17 @@ sudo systemctl start oracle-xe-21c.service
 :Abrir la configuracion:
 
 /etc/init.d/oracle-xe-21c configure
+
+:Ver diccionario de datos:
+
+SELECT *
+FROM dictionary;
+
+:Ver tablas del dictionary:
+
+SELECT COUNT(*) FROM DBA_OBJECTS WHERE OBJECT_TYPE = 'TABLE';
+
+:Ver Usuarios creados:
+
+SELECT COUNT(*)
+FROM dba_users; 
