@@ -33,3 +33,12 @@ SELECT COUNT(*) FROM DBA_OBJECTS WHERE OBJECT_TYPE = 'TABLE';
 
 SELECT COUNT(*)
 FROM dba_users; 
+
+:Solucionar el problema de las flechas en SQL:
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+
+sudo yum install rlwrap
+
+rlwrap sqlplus sys@localhost/XEPDB1 as sysdba
+
