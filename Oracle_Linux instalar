@@ -14,6 +14,10 @@ sudo systemctl start oracle-xe-21c.service
 
 /etc/init.d/oracle-xe-21c configure
 
+:Iniciar SQLPLUS:
+
+rlwrap sqlplus sys@localhost/XEPDB1 as sysdba 
+
 :Ver diccionario de datos:
 
 SELECT *
