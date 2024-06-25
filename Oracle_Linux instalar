@@ -10,6 +10,8 @@ sqlplus SYS@localhost/XEPDB1 as sysdba
 
 sudo systemctl start oracle-xe-21c.service
 
+sudo systemctl enable oracle-xe-21c
+
 :Abrir la configuracion:
 
 /etc/init.d/oracle-xe-21c configure
