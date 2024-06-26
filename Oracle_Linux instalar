@@ -118,6 +118,16 @@ LISTENER_XE =
 Habria que guardarlo con extension .ora. 
 HOST= Sustituimos "LOCALHOST" por "IP MAQUINA DONDE NOS CONECTAMOS" 
 
+:Tendremos antes que conectarnos activar los puertos:
+
+sudo firewall-cmd --zone=public --add-port=1521/tcp --permanent
+
+sudo firewall-cmd --reload
+
+:Nos podremos conectar a la maquina de forma remota con este comando:
+
+sqlplus sys@XE as sysdba   <--- podriamos conectarnos con otro usuario, incluyendo otro usuario en el archivo tnsnames.
+
 :Este comando nos permite saber los protocolos en red en linux:
 
 netstat -putona
