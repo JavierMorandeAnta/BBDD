@@ -73,27 +73,52 @@ Address varchar(20));
 
 :Realizar una insercion en tabla 'students':
 
-INSERT INTO students (stu_Id, stu_name, Age, Gender, Doa, Address)
-VALUES
-(101, 'Joseph', 22, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Pune'),
-(102, 'Maria', 35, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York'),
-(103, 'Vipul', 20, 'M', TO_DATE('2026-11-24', 'YYYY-MM-DD'), 'Miami'),
-(104, 'Anubhav', 31, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Pune'),
-(105, 'Utkarsh', 35, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York'),
-(106, 'Carolina', 35, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'New York'),
-(107, 'Cecilia', 52, 'F', TO_DATE('2016-11-22', 'YYYY-MM-DD'), 'Rosario'),
-(108, 'Akshay', 36, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Pune'),
-(109, 'Akash', 38, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'New York'),
-(110, 'Javier', 26, 'M', TO_DATE('1998-05-16', 'YYYY-MM-DD'), 'Madrid'),
-(111, 'Raghav', 24, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Detroit'),
-(112, 'Bianca', 24, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Pune'),
-(113, 'Amnrit', 23, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Miami'),
-(114, 'Andrew', 18, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Boston'),
-(115, 'Ricky', 26, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Detroit'),
-(116, 'Cummins', 30, 'M', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Chicago'), 
-(117, 'Rabada', 20, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Boston'),
-(118, 'Johnson', 25, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York'),
-(119, 'Jessenia', 27, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Boston'),
-(120, 'Illeana', 25, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Chicago');
+INSERT ALL
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (101, 'Joseph', 22, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Pune')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (102, 'Maria', 35, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (103, 'Vipul', 20, 'M', TO_DATE('2026-11-24', 'YYYY-MM-DD'), 'Miami')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (104, 'Anubhav', 31, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Pune')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (105, 'Utkarsh', 35, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (106, 'Carolina', 35, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'New York')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (107, 'Cecilia', 52, 'F', TO_DATE('2016-11-22', 'YYYY-MM-DD'), 'Rosario')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (108, 'Akshay', 36, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Pune')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (109, 'Akash', 38, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'New York')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (110, 'Javier', 26, 'M', TO_DATE('1998-05-16', 'YYYY-MM-DD'), 'Madrid')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (111, 'Raghav', 24, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Detroit')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (112, 'Bianca', 24, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Pune')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (113, 'Amnrit', 23, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Miami')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (114, 'Andrew', 18, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Boston')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (115, 'Ricky', 26, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Detroit')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (116, 'Cummins', 30, 'M', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Chicago')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (117, 'Rabada', 20, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'Boston')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (118, 'Johnson', 25, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (119, 'Jessenia', 27, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Boston')
+INTO students (stu_Id, stu_name, Age, Gender, Doa, Address) VALUES (120, 'Illeana', 25, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Chicago')
+SELECT * FROM dual;
+
+:Conexiones remotas:
+
+cd /opt/oracle/homes/OraDBHome21cXE/network/admin 
+
+cat tnsnames.ora
+
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )
+
+LISTENER_XE =
+  (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+
+-Esto lo tendremos que copiar a nuestra maquina anfitriona en el apartado de oracle/instantclient_21_14/network/admin-
+Habria que guardarlo con extension .ora. 
+HOST= Sustituimos "LOCALHOST" por "IP MAQUINA DONDE NOS CONECTAMOS" 
+
+
+
 
 
