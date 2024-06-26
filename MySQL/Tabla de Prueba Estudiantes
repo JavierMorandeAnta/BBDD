@@ -8,7 +8,7 @@ USE school <--- para usar la nueva Database
 
 :Sentencia tabla de prueba estudiantes:
 
-CREATE TABLE `STUDENTS` (
+CREATE TABLE 'STUDENTS' (
     `stu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Esta columna es la clave primaria con un auto incremental.',
     `stu_name` varchar(25) NOT NULL,
     `age` int(11) NOT NULL,
