@@ -95,4 +95,3 @@ VALUES
 (118, 'Johnson', 25, 'M', TO_DATE('2016-11-23', 'YYYY-MM-DD'), 'New York'),
 (119, 'Jessenia', 27, 'M', TO_DATE('2016-11-25', 'YYYY-MM-DD'), 'Boston'),
 (120, 'Illeana', 25, 'F', TO_DATE('2016-11-24', 'YYYY-MM-DD'), 'Chicago');
-
