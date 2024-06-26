@@ -2,7 +2,7 @@
 
 export ORACLE_SID=XE
 export ORAENV_ASK=NO
-. /opt/Oracle/product/21c/dbhomeXE/bin/oraenv
+. /opt/oracle/product/21c/dbhomeXE/bin/oraenv
 
 sqlplus SYS@localhost/XEPDB1 as sysdba
 
