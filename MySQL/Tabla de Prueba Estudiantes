@@ -17,3 +17,12 @@ CREATE TABLE 'STUDENTS' (
     `address` varchar(20) NOT NULL,
     PRIMARY KEY (`stu_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp850 COLLATE=cp850_general_ci;
+
+:Crear de forma mas simplificada:
+
+create table students (stu_Id int primary key,
+stu_name varchar(25),
+Age int,
+Gender char(1),
+Doa date,
+Address varchar(20)); 
