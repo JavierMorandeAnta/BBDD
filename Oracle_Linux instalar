@@ -53,8 +53,3 @@ GRANT CREATE TABLE TO nuevo_usuario; <---- Permite al usuario crear tablas
 GRANT CREATE VIEW TO nuevo_usuario; <---- Permite al usuario crear vistas
 
 SELECT username FROM dba_users WHERE username = 'NUEVO_USUARIO'; <---- verificar el nuevo usuario creado
-
-
-
-
-
