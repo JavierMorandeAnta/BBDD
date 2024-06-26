@@ -42,3 +42,15 @@ sudo yum install rlwrap
 
 rlwrap sqlplus sys@localhost/XEPDB1 as sysdba
 
+:Crear nuevo usuario:
+
+CREATE USER nuevo_usuario IDENTIFIED BY contraseña;
+
+GRANT CREATE SESSION TO nuevo_usuario; -- Permite al usuario iniciar sesión en la base de datos
+
+GRANT CREATE TABLE TO nuevo_usuario; -- Permite al usuario crear tablas
+
+GRANT CREATE VIEW TO nuevo_usuario; -- Permite al usuario crear vistas
+
+SELECT username FROM dba_users WHERE username = 'NUEVO_USUARIO'; <---- verificar el nuevo usuario creado
+
