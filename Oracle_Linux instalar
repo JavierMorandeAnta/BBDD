@@ -58,4 +58,7 @@ SELECT username FROM dba_users WHERE username = 'NUEVO_USUARIO'; <---- verificar
 
 connect nuevo_usuario@localhost:1521/XEPDB1 <-- conectarse con el nuevo usuario
 
+:Asignar espacio en el tablespace:
+
+ALTER USER nuevo_usuario QUOTA 1M ON USERS;
 
