@@ -57,3 +57,5 @@ GRANT CREATE VIEW TO nuevo_usuario; <---- Permite al usuario crear vistas
 SELECT username FROM dba_users WHERE username = 'NUEVO_USUARIO'; <---- verificar el nuevo usuario creado
 
 connect nuevo_usuario@localhost:1521/XEPDB1 <-- conectarse con el nuevo usuario
+
+
