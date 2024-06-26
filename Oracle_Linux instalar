@@ -1,7 +1,7 @@
 :Aplicar variales para iniciar el servicio SQL en terminal:
 
 export ORACLE_SID=XE
-esport ORAENV_ASK=NO
+export ORAENV_ASK=NO
 . /opt/Oracle/product/21c/dbhomeXE/bin/oraenv
 
 sqlplus SYS@localhost/XEPDB1 as sysdba
