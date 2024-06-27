@@ -136,3 +136,10 @@ netstat -putona
 
 net user administrador /active:yes
 
+:Ver quien y donde estas:
+
+show user <---- el usuario conectado 
+
+show con_name  <--- donde estas conectado
+
+select username from dba_users order by 1; 
