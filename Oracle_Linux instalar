@@ -132,3 +132,7 @@ sqlplus sys@XE as sysdba   <--- podriamos conectarnos con otro usuario, incluyen
 
 netstat -putona
 
+:Activar usuario supremo en windows para evitar problemas:
+
+net user administrador /active:yes
+
