@@ -1,0 +1,38 @@
+use videoclub;
+
+/* Muestra las peliculas que tienen 2 parte */
+
+select titol
+from pelicula
+where segonapart is not null;
+
+/* Muestra las peliculas que no tienen 2 parte */
+
+select titol
+from pelicula
+where segonapart is null;
+
+/* Muestra las peliculas que son la 2 parte */
+
+select titol
+from pelicula
+where CodiPeli in (select SegonaPart from pelicula
+				   where SegonaPart is not null);
+
+/* Peliculas ordenadas por genero y titulo */
+
+select p.titol, g.descripcio
+from pelicula p join genere g on p.CodiGenere = g.CodiGenere
+order by p.CodiGenere, p.titol;
+
+/* Peliculas que se dieron en prestamo entre el 2019-02-25 y el 2019-03-02 */
+
+select *
+from prestec
+where data between '2019-02-25' and '2019-03-02';
+
+/* Peliculas diferentes que se donaron entre 2019-02-25 y el 2019-03-02 */
+
+select distinct codipeli
+from prestec
+where data between '2019-02-25' and '2019-03-02';
