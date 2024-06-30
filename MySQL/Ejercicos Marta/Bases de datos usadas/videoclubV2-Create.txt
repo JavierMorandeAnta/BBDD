@@ -1,0 +1,61 @@
+/* a la base de dades hi ha pel·lícules
+- una pel·lícula es de un gènere
+- una pel·lícula pot tenir una segona part, que és una altra pel·lícula
+- una pel·lícula té varis intèrprets
+- un actor interpreta vàries pel·lícules
+*/
+CREATE TABLE GENERE (
+	CodiGenere 	INT(5) PRIMARY KEY, 
+	Descripcio 	VARCHAR(15) );
+
+CREATE TABLE ACTOR (
+	CodiActor	INT(5) PRIMARY KEY,
+	Nom 		VARCHAR(15) ); 
+
+CREATE TABLE PELICULA (
+	CodiPeli	INT(5) PRIMARY KEY,
+	Titol		VARCHAR(50),
+	CodiGenere	INT(5),
+	SegonaPart	INT(5),
+	INDEX IDX_PELI_GEN (CodiGenere),
+	INDEX IDX_PELI_SEGP (SegonaPart),
+        FOREIGN KEY (CodiGenere) REFERENCES GENERE(CodiGenere),
+        FOREIGN KEY (SegonaPart) REFERENCES PELICULA(CodiPeli));
+
+CREATE TABLE INTERPRETADA (
+	CodiPeli 	INT(5), 
+	CodiActor	INT(5),
+	PRIMARY KEY (CodiPeli, CodiActor), 
+        INDEX IDX_PELIINTERPRETADA (CodiPeli),
+        INDEX IDX_ACTORINTERPRETADA (CodiActor),
+        FOREIGN KEY (CodiPeli) REFERENCES PELICULA(CodiPeli),
+        FOREIGN KEY (CodiActor) REFERENCES ACTOR(CodiActor) );
+
+/* al videoclub hi ha còpies de les pel·lícules
+- una còpia és d'una pel·lícula
+- una còpia es dona en préstec a clients
+- un préstec es d'una pel·lícula en una data a un client
+*/
+
+CREATE TABLE COPIA (
+	CodiPeli 	INT(5),
+	CodiCopia 	INT(5),
+	PRIMARY KEY (CodiPeli, CodiCopia),
+	INDEX IDX_COPIA_PELI (CodiPeli),
+	FOREIGN KEY (CodiPeli) REFERENCES PELICULA (CodiPeli)  );
+
+CREATE TABLE CLIENT (
+	DNI 		CHAR (10) PRIMARY KEY,
+	Nom 		VARCHAR(20), 
+	Adreca		VARCHAR(20), 
+	Telefon 	CHAR (9) );
+
+CREATE TABLE PRESTEC (
+	CodiPeli	INT(5), 
+	CodiCopia	INT(5), 
+	Data		DATE, 
+	DNI 		CHAR (10) ,
+	PRIMARY KEY (CodiPeli, CodiCopia, Data),
+        INDEX IDX_PRESTEC_CLIENT (DNI),
+	FOREIGN KEY (DNI) REFERENCES CLIENT(DNI),
+	FOREIGN KEY (CodiPeli,CodiCopia) REFERENCES COPIA(CodiPeli,CodiCopia) );
