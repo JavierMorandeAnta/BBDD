@@ -1,3 +1,5 @@
+:Activamos en el xampp el apache con el puerto correcto:
+
 <?php
 $user = "root"; 
 $password = "";
