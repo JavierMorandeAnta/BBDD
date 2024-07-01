@@ -12,8 +12,7 @@ sudo mysql -u root -p
 
 :Podemos cargar el archivo que teniamos anteriormente "ifct0310.sql":
 
-mysql> source ifct0310.sql <---- indicando la ruta del arvicho
-
+mysql> source ifct0310.sql <---- indicando la ruta del archivo
 :Configurar cuestiones seguridad:
 
 mysql> ALTER USER 'root'@'localhost'
