@@ -1,0 +1,90 @@
+:Mediante el uso Xampp con apache crearemos este .php en "Htdocts":
+
+
+<?php
+// DSN de ODBC
+$dsnOracle = 'Oracle 21c';
+$dsnMariaDB = 'MariaDB';
+
+// Credenciales de Oracle
+$userOracle = 'Javier';
+$passwordOracle = '123456';
+
+// Credenciales de MariaDB
+$userMariaDB = 'Javier';
+$passwordMariaDB = '123456';
+
+// Conexión a Oracle
+$connOracle = odbc_connect($dsnOracle, $userOracle, $passwordOracle);
+
+if (!$connOracle) {
+    die("Error de conexión a Oracle: " . odbc_errormsg());
+} else {
+    echo "Conexión a Oracle exitosa.<br>";
+}
+
+// Conexión a MariaDB
+$connMariaDB = odbc_connect($dsnMariaDB, $userMariaDB, $passwordMariaDB);
+
+if (!$connMariaDB) {
+    die("Error de conexión a MariaDB: " . odbc_errormsg());
+} else {
+    echo "Conexión a MariaDB exitosa.<br>";
+}
+
+// Ejemplo de consulta a Oracle
+$queryOracle = "SELECT * FROM NOTAS";
+$resultOracle = odbc_exec($connOracle, $queryOracle);
+
+if ($resultOracle) {
+    echo "Datos de Oracle:<br>";
+    while ($row = odbc_fetch_array($resultOracle)) {
+        print_r($row);
+        echo "<br>";
+    }
+} else {
+    echo "Error en la consulta a Oracle: " . odbc_errormsg($connOracle);
+}
+
+// Ejemplo de consulta a MariaDB
+$queryMariaDB = "SELECT * FROM notas";
+$resultMariaDB = odbc_exec($connMariaDB, $queryMariaDB);
+
+if ($resultMariaDB) {
+    echo "Datos de MariaDB:<br>";
+    while ($row = odbc_fetch_array($resultMariaDB)) {
+        print_r($row);
+        echo "<br>";
+    }
+} else {
+    echo "Error en la consulta a MariaDB: " . odbc_errormsg($connMariaDB);
+}
+
+// Preparar consulta de inserción en Oracle
+$queryOracle = "INSERT INTO javier.NOTAS (DNI, NOMBRE, NOTA) VALUES (?, ?, ?)";
+$stmt = odbc_prepare($connOracle, $queryOracle);
+
+if (!$stmt) {
+    die("Error al preparar la consulta de inserción en Oracle: " . odbc_errormsg($connOracle));
+}
+
+// Recorrer resultados de MariaDB e insertar en Oracle
+while ($row = odbc_fetch_array($resultMariaDB)) {
+    $id = $row['DNI']; // Ajustar según la estructura de tu tabla en MariaDB
+    $estudiante = $row['NOMBRE']; // Ajustar según la estructura de tu tabla en MariaDB
+    $nota = $row['NOTA']; // Ajustar según la estructura de tu tabla en MariaDB
+
+    // Ejecutar la consulta de inserción con los parámetros
+    $success = odbc_execute($stmt, array($id, $estudiante, $nota));
+
+    if ($success) {
+        echo "Fila insertada en Oracle: id=$id, estudiante=$estudiante, nota=$nota<br>";
+    } else {
+        echo "Error al insertar fila en Oracle: " . odbc_errormsg($connOracle) . "<br>";
+    }
+}
+
+// Cerrar conexiones
+odbc_close($connMariaDB);
+odbc_close($connOracle);
+?>
