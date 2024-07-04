@@ -10,6 +10,15 @@ FROM notas; <--- La tabla donde se sacan los datos
 2. Crear un script .bat en Windows usando scp para trasferir el fichero a un servidor de Ubuntu
         (El nombre sera Trasferencia.bat)
 
+sudo systemctl status ssh <-- Nos dira si tenemos ssh en ubuntu
+sudo apt install openssh-server <-- En ubuntu esto nos ayudara a descargar ese servicio
+sudo systemctl start ssh <-- Podremos inicarlo
+
+ssh -V <--- Comprobamos en Windows que este instalada
+
+ssh javier@192.168.11.130 <--- Probamos la conexion remota
+
+
 @echo off
 SETLOCAL
 setlocal
