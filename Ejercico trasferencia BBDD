@@ -44,14 +44,26 @@ ENDLOCAL
 
 CREATE DATABASE IF NOT EXISTS EXAMEN;
 USE EXAMEN;
+CREATE TABLE IF NOT EXISTS `NOTAS` (
+`DNI` varchar(10) NOT NULL,
+`NOMBRE` varchar(64) NOT NULL,
+`NOTA` decimal (4,2) DEFAULT 0.00,
+PRIMARY KEY (`DNI`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp850 COLLATE=cp850_general_ci;
 
-LOAD DATA LOCAL INFILE '/home/javier/Documentos/Auto.csv'
-INTO TABLE notas
+DELETE FROM NOTAS;
+
+LOAD DATA LOCAL INFILE '/home/varo/Documentos/notas.csv'
+INTO TABLE NOTAS
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\n';
 
-/*IGNORE 1 LINES; -- Ignora la primera linea si es cabecera *\
+INSERT INTO NOTAS
+(SELECT *
+FROM NOTAS
+WHERE DNI NOT IN (SELECT DNI
+  FROM NOTAS));
 
 4. Crear un script en BASH en el servidor Ubuntu que compruebe periódicamente si hay un fichero nuevo y lo cargue en la base de datos
                 (Creamos un fichero llamado cargarperiodicamente.sh)
