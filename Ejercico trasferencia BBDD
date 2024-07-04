@@ -1,0 +1,8 @@
+1. Crear un fichero SQL que realice la consulta y vuelque los datos en un fichero en Windows
+
+SELECT *
+INTO OUTFILE 'C:/Aqui/Auto.csv'  <--- La ruta donde se guarda
+FIELDS TERMINATED BY ','
+ENCLOSED BY '""'
+LINES TERMINATED BY '\n'
+FROM notas; <--- La tabla donde se sacan los datos
