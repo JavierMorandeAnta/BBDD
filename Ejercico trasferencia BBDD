@@ -54,9 +54,8 @@ LINES TERMINATED BY '\n'
 /*IGNORE 1 LINES; -- Ignora la primera linea si es cabecera *\
 
 4. Crear un script en BASH en el servidor Ubuntu que compruebe periódicamente si hay un fichero nuevo y lo cargue en la base de datos
-
+                (Creamos un fichero llamado cargarperiodicamente.sh)
 #!/bin/bash
-
 # Variables
 FICHERO='/home/javier/Documentos/Auto.csv'
 LOG='/home/javier/Documentos/carga.log'
@@ -66,28 +65,18 @@ DB_NAME='EXAMEN'
 SQL_FILE='/home/javier/Documentos/cargar.sql'
 
 # Verificar si el archivo CSV existe
-
 if [ -f "$FICHERO" ]; then
-
     echo "$(date) - Encontrado fichero $FICHERO" >> "$LOG"
-
-    # Ejecutar el script SQL en MySQL
-
+# Ejecutar el script SQL en MySQL
     mysql -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < "$SQL_FILE"
-
-    # Verificar el estado de ejecución de MySQL
-
+# Verificar el estado de ejecución de MySQL
    if [ $? -eq 0 ]; then
-
         echo "$(date) - Carga completada" >> "$LOG"
-
         echo "$(date) - Fichero $FICHERO eliminado" >> "$LOG"
-
         rm "$FICHERO"
     else
         echo "$(date) - Error en la carga de datos" >> "$LOG"
  fi
 else
-
     echo "$(date) - No se encontró el fichero $FICHERO" >> "$LOG"
 fi
