@@ -3,7 +3,7 @@
 SELECT *
 INTO OUTFILE 'C:/Aqui/Auto.csv'  <--- La ruta donde se guarda y el formato que tiene
 FIELDS TERMINATED BY ','
-ENCLOSED BY ""
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 FROM notas; <--- La tabla donde se sacan los datos
 
@@ -40,6 +40,14 @@ mysql -u root -p123456 -D EXAMEN
 echo "Se ha generado el fichero notas.csv"
 
 3. Crear un script SQL en el servidor Ubuntu que cargue los datos desde el fichero recibido en la base de datos de MariaDB
+
+//Primero accedemos a MariaDB en Ubuntu crearemos la misma base de datos con//
+
+CREATE TABLE notas (
+DNI VARCHAR(50),
+NOMBRE VARCHAR(50),
+NOTA INT
+);
 
 
 
