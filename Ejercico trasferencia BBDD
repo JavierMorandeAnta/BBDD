@@ -18,17 +18,16 @@ ssh -V <--- Comprobamos en Windows que este instalada
 
 ssh javier@192.168.11.130 <--- Probamos la conexion remota
 
-
 @echo off
 SETLOCAL
-setlocal
-:: Variables
-SET SERVER_USER=Javier
-SET SERVER_IP=192.168.11.130
-SET REMOTE_PATH=/Aqui
-SET FILE_PATH=C:\Aqui\Auto
-:: Trasferencia del fichero
 
+:: Variables
+SET SERVER_USER=javier
+SET SERVER_IP=192.168.11.130
+SET REMOTE_PATH=/home/javier/Documentos
+SET FILE_PATH=C:\Aqui\Auto.csv
+
+:: Trasferencia del fichero
 scp %FILE_PATH% %SERVER_USER%@%SERVER_IP%:%REMOTE_PATH%
 
 ENDLOCAL
