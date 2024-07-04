@@ -32,3 +32,10 @@ scp %FILE_PATH% %SERVER_USER%@%SERVER_IP%:%REMOTE_PATH%
 
 ENDLOCAL
 
+        Podemos hacer un .bat que solucione el error de que el archivo ya este creado guardando la sentencia de SQL y luego buscandola
+                        (Lo llamaremos "Borrar para Insertar.bat)
+echo off
+del C:\Aqui\Auto.csv
+mysql -u root -p123456 -D EXAMEN
+echo "Se ha generado el fichero notas.csv"
+
