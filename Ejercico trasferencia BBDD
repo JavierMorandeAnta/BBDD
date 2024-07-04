@@ -41,13 +41,18 @@ echo "Se ha generado el fichero notas.csv"
 
 3. Crear un script SQL en el servidor Ubuntu que cargue los datos desde el fichero recibido en la base de datos de MariaDB
 
-//Primero accedemos a MariaDB en Ubuntu crearemos la misma base de datos con//
+CREATE DATABASE EXAMEN IF NOT EXISTS;
+USE EXAMEN;
 
-CREATE TABLE notas (
-DNI VARCHAR(50),
-NOMBRE VARCHAR(50),
-NOTA INT
-);
+LOAD DATA LOCAL INFILE '/home/javier/Documentos/Auto.csv'
+INTO TABLE notas
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+
+/*IGNORE 1 LINES; -- Ignora la primera linea si es cabecera *\
+
+
 
 
 
