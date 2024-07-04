@@ -40,7 +40,7 @@ scp %FILE_PATH% %SERVER_USER%@%SERVER_IP%:%REMOTE_PATH%
 ENDLOCAL
 
 3. Crear un script SQL en el servidor Ubuntu que cargue los datos desde el fichero recibido en la base de datos de MariaDB
-              (Lo llamaremos carga.sql en home/javier/Documentos)
+              (Lo llamaremos cargar.sql en home/javier/Documentos)
 
 CREATE DATABASE IF NOT EXISTS EXAMEN;
 USE EXAMEN;
@@ -80,3 +80,14 @@ if [ -f "$FICHERO" ]; then
 else
     echo "$(date) - No se encontró el fichero $FICHERO" >> "$LOG"
 fi
+
+:Darle privilegios:
+chmod +x /home/Javier/cargarperiodicamente.sh
+
+:Programamos la ejecucion de ello:
+crontab -e
+
+:Añadimos la siguiente linea al final para ejecutar el script cada hora:
+0 * * * * /home/Javier/Documentos/
+
+
