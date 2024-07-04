@@ -1,8 +1,25 @@
 1. Crear un fichero SQL que realice la consulta y vuelque los datos en un fichero en Windows
 
 SELECT *
-INTO OUTFILE 'C:/Aqui/Auto.csv'  <--- La ruta donde se guarda
+INTO OUTFILE 'C:/Aqui/Auto.csv'  <--- La ruta donde se guarda y el formato que tiene
 FIELDS TERMINATED BY ','
 ENCLOSED BY '""'
 LINES TERMINATED BY '\n'
 FROM notas; <--- La tabla donde se sacan los datos
+
+2. Crear un script .bat en Windows usando scp para trasferir el fichero a un servidor de Ubuntu
+        (El nombre sera Trasferencia.bat)
+
+@echo off
+SETLOCAL
+setlocal
+:: Variables
+SET SERVER_USER=Javier
+SET SERVER_IP=192.168.11.130
+SET REMOTE_PATH=/Aqui
+SET FILE_PATH=C:\Aqui\Auto
+:: Trasferencia del fichero
+
+scp %FILE_PATH% %SERVER_USER%@%SERVER_IP%:%REMOTE_PATH%
+
+ENDLOCAL
