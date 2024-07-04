@@ -52,13 +52,5 @@ LINES TERMINATED BY '\n'
 
 /*IGNORE 1 LINES; -- Ignora la primera linea si es cabecera *\
 
-
-
-
-
-
-
-
-
-
+4. Crear un script en BASH en el servidor Ubuntu que compruebe periódicamente si hay un fichero nuevo y lo cargue en la base de datos
 
