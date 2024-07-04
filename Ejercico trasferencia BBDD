@@ -10,9 +10,9 @@ FROM notas; <--- La tabla donde se sacan los datos
 Podemos hacer un .bat que solucione el error de que el archivo ya este creado guardando la sentencia de SQL y luego buscandola
                         (Lo llamaremos "Borrar para Insertar.bat)
 echo off
-del C:\Aqui\Auto.csv
-mysql -u root -p123456 -D EXAMEN
-echo "Se ha generado el fichero notas.csv"
+del C:\Aqui\Auto.csv  <--- Ruta del archivo
+mysql -u root -p123456 -D EXAMEN <-- Login a MariaDB
+echo "Se ha generado el fichero notas.csv" 
 
 2. Crear un script .bat en Windows usando scp para trasferir el fichero a un servidor de Ubuntu
         (El nombre sera Trasferencia.bat)
