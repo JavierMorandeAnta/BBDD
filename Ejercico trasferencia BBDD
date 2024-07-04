@@ -7,6 +7,13 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 FROM notas; <--- La tabla donde se sacan los datos
 
+Podemos hacer un .bat que solucione el error de que el archivo ya este creado guardando la sentencia de SQL y luego buscandola
+                        (Lo llamaremos "Borrar para Insertar.bat)
+echo off
+del C:\Aqui\Auto.csv
+mysql -u root -p123456 -D EXAMEN
+echo "Se ha generado el fichero notas.csv"
+
 2. Crear un script .bat en Windows usando scp para trasferir el fichero a un servidor de Ubuntu
         (El nombre sera Trasferencia.bat)
 
@@ -32,13 +39,6 @@ scp %FILE_PATH% %SERVER_USER%@%SERVER_IP%:%REMOTE_PATH%
 
 ENDLOCAL
 
-        Podemos hacer un .bat que solucione el error de que el archivo ya este creado guardando la sentencia de SQL y luego buscandola
-                        (Lo llamaremos "Borrar para Insertar.bat)
-echo off
-del C:\Aqui\Auto.csv
-mysql -u root -p123456 -D EXAMEN
-echo "Se ha generado el fichero notas.csv"
-
 3. Crear un script SQL en el servidor Ubuntu que cargue los datos desde el fichero recibido en la base de datos de MariaDB
 
 CREATE DATABASE IF NOT EXISTS EXAMEN;
@@ -51,6 +51,9 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 
 /*IGNORE 1 LINES; -- Ignora la primera linea si es cabecera *\
+
+
+
 
 
 
