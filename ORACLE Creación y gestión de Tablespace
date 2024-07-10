@@ -37,10 +37,11 @@ ALTER TABLESPACE prueba READ ONLY; --Solo lectura--
 
 :Apagar y encender por pasos la database:
 
-SHUTDOWN normal/inmmediate/abort; --Paramos o apagamos la database--
+SHUTDOWN normal/transactional/inmmediate/abort; --Paramos o apagamos la database--
 
 STARTUP nomount; --Iniciamos sin montar la database--
 
 ALTER database mount; --Montarla--
 
 ALTER database open; --Abrimos la database--
+
