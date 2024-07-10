@@ -31,6 +31,7 @@ WHERE username = 'JAVIER';
 
 :Poner en Offline/Online o solo lectura la Tablespace:
 
-ALTER TABLESPACE prueba OFFLINE; --Podemos hacer lo mismo con Online
+ALTER TABLESPACE prueba OFFLINE; --Podemos hacer lo mismo con Online--
 
-ALTER TABLESPACE prueba READ ONLY; --Solo lectura
+ALTER TABLESPACE prueba READ ONLY; --Solo lectura--
+
