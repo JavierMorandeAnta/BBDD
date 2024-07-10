@@ -3,10 +3,10 @@
 https://localhost:5500/em/login
 
 CREATE TABLESPACE Prueba
-DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf' -- Ruta del archivo donde se guarda--
-SIZE 100M                  --El tamaño que tendra el fichero y la TABLESPACE--
-AUTOEXTEND ON NEXT         --Si queremos que se extienda automaticamente--
-50M MAXSIZE UNLIMITED;     --El limite que hasta donde se extiende--
+DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'   -- Ruta del archivo donde se guarda--
+SIZE 100M                                                           --El tamaño que tendra el fichero y la TABLESPACE--
+AUTOEXTEND ON NEXT                                                  --Si queremos que se extienda automaticamente--
+50M MAXSIZE UNLIMITED;                                              --El limite que hasta donde se extiende--
 
 :Asignar esa Tablespace a un usuario creado:
 
