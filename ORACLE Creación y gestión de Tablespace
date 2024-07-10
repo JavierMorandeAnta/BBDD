@@ -1,7 +1,7 @@
 https://localhost:5500/em/login
 
 CREATE TABLESPACE Prueba
-DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf' <--- Ruta del archivo donde se guarda
+DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf' -- Ruta del archivo donde se guarda--
 SIZE 100M 
 AUTOEXTEND ON NEXT 
 50M MAXSIZE UNLIMITED;
