@@ -6,3 +6,24 @@ SIZE 100M
 AUTOEXTEND ON NEXT 
 50M MAXSIZE UNLIMITED;
 
+:Asignar esa Tablespace a un usuario creado:
+
+--Si el usuario no esta creado--
+
+CREATE USER nombre_usuario
+IDENTIFIED BY contraseña
+DEFAULT TABLESPACE prueba
+QUOTA UNLIMITED ON prueba;
+
+--Si el usuario ya esta creado podemos alterarlo con un administrador--
+
+ALTER USER nombre_usuario
+DEFAULT TABLESPACE prueba <--- Nombre de la Tablespace
+QUOTA UNLIMITED ON prueba;
+
+--Revisar que Tablaespace utiliza el usuario---
+
+SELECT username, default_tablespace
+FROM dba_users
+WHERE username = 'JAVIER';
+
