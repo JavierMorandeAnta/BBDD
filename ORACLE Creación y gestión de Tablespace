@@ -29,3 +29,7 @@ SELECT username, default_tablespace
 FROM dba_users
 WHERE username = 'JAVIER';
 
+:Poner en Offline/Online la Tablespace:
+
+ALTER TABLESPACE prueba OFFLINE; --Podemos hacer lo mismo con Online
+
