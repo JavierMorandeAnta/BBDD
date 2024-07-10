@@ -35,3 +35,15 @@ ALTER TABLESPACE prueba OFFLINE; --Podemos hacer lo mismo con Online--
 
 ALTER TABLESPACE prueba READ ONLY; --Solo lectura--
 
+:Apagar y encender por pasos la database:
+
+SHUTDOWN abort; --Paramos o apagamos la database--
+
+STARTUP nomount; --Iniciamos sin montar la database--
+
+ALTER database mount; --Montarla--
+
+ALTER database open; --Abrimos la daabase--
+
+
+
