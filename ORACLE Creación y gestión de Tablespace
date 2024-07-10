@@ -43,7 +43,5 @@ STARTUP nomount; --Iniciamos sin montar la database--
 
 ALTER database mount; --Montarla--
 
-ALTER database open; --Abrimos la daabase--
-
-
+ALTER database open; --Abrimos la database--
 
