@@ -18,7 +18,7 @@ QUOTA UNLIMITED ON prueba;
 --Si el usuario ya esta creado podemos alterarlo con un administrador--
 
 ALTER USER nombre_usuario
-DEFAULT TABLESPACE prueba <--- Nombre de la Tablespace
+DEFAULT TABLESPACE prueba -- Nombre de la Tablespace--
 QUOTA UNLIMITED ON prueba;
 
 --Revisar que Tablaespace utiliza el usuario---
