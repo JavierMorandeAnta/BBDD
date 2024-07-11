@@ -58,7 +58,7 @@ STARTUP PFFILE = 'C:\app\javier\product\21c\dbhomeXE\database\init.ora'; --Podem
 
 :Consultar papelera para poder restaurar cuestiones:
 
-select * from recyclebin; --Te dara todo el contenido borrado y un identificador--
+SELECT * FROM recyclebin; --Te dara todo el contenido borrado y un identificador--
 
 SELECT * FROM "Codigo de identificador que te proporciona el comando anterior junto al nombre borrado" --Veremos el contenido de esa tabla borrada"
 
