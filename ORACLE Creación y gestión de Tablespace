@@ -49,6 +49,8 @@ ALTER database open; --Abrimos la database--
 
 SHOW PARAMETERS --Poder ver los parametros--
 
+SHOW PARAMETERS recycle --Podemos ver como esta configurada la recyclebin--
+
 CREATE PFILE='C:\app\javier\product\21c\dbhomeXE\database\init.ora' FROM MEMORY; --Podemos crear este archivo que es legible y contine los de la memoria--
                                                                     FROM SPFILE; --Para poder ver los que tiene por defecto y al arrancar--
 
