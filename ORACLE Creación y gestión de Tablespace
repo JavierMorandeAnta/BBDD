@@ -64,3 +64,13 @@ SELECT * FROM "Codigo de identificador que te proporciona el comando anterior ju
 
 CREATE TABLE NOMBRE AS SELECT * FROM "Codigo de identificador"                                          --Restauramos la tabla--
 
+:Consultar informacion en el diccionario:
+
+SELECT * FROM v$controlfile;                                                                           --Visualiza la información de los ficheros de control--
+
+SELECT * FROM v$log;                                                                                   --Visualiza la información de los ficheros Redo--
+
+SELECT * FROM dba_tablespaces;                                                                         --Visualiza la información de las Tablespace creadas--
+
+SELECT * FROM dba_data_files;                                                                          --Visualiza la información de los ficheros de datos--
+
