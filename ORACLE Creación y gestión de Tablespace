@@ -56,5 +56,11 @@ CREATE PFILE='C:\app\javier\product\21c\dbhomeXE\database\init.ora' FROM MEMORY;
 
 STARTUP PFFILE = 'C:\app\javier\product\21c\dbhomeXE\database\init.ora'; --Podemos inicar con ese parametro de configuraciones una vez apagada--
 
+:Consultar papelera para poder restaurar cuestiones:
 
+select * from recyclebin; --Te dara todo el contenido borrado y un identificador--
+
+SELECT * FROM "Codigo de identificador que te proporciona el comando anterior junto al nombre borrado" --Veremos el contenido de esa tabla borrada"
+
+CREATE TABLE NOMBRE AS SELECT * FROM "Codigo de identificador" --Restauramos la tabla--
 
