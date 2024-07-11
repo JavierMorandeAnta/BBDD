@@ -73,4 +73,3 @@ SELECT * FROM v$logfile;                                                        
 SELECT * FROM dba_tablespaces;                                                                         --Visualiza la información de las Tablespace creadas--
 
 SELECT * FROM dba_data_files;                                                                          --Visualiza la información de los ficheros de datos--
-
