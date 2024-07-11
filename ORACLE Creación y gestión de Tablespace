@@ -45,3 +45,8 @@ ALTER database mount; --Montarla--
 
 ALTER database open; --Abrimos la database--
 
+:Podriamos observar los parametros:
+
+SHOW PARAMETERS --Poder ver los parametros--
+
+SHOW PARAMETER db_cache_size; --El tamaño del cache--
