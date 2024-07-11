@@ -68,7 +68,7 @@ CREATE TABLE NOMBRE AS SELECT * FROM "Codigo de identificador"                  
 
 SELECT * FROM v$controlfile;                                                                           --Visualiza la información de los ficheros de control--
 
-SELECT * FROM v$log;                                                                                   --Visualiza la información de los ficheros Redo--
+SELECT * FROM v$logfile;                                                                               --Visualiza la información de los ficheros Redo--
 
 SELECT * FROM dba_tablespaces;                                                                         --Visualiza la información de las Tablespace creadas--
 
