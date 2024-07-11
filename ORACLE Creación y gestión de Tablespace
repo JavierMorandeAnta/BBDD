@@ -45,8 +45,13 @@ ALTER database mount; --Montarla--
 
 ALTER database open; --Abrimos la database--
 
-:Podriamos observar los parametros:
+:Podriamos observar los parametros y crear un fichero con ellos:
 
 SHOW PARAMETERS --Poder ver los parametros--
 
-SHOW PARAMETER db_cache_size; --El tamaño del cache--
+CREATE PFILE='C:\app\javier\product\21c\dbhomeXE\database\init.ora' FROM MEMORY; --Podemos crear este archivo que es legible y contine los de la memoria--
+                                                                    FROM SPFILE; --Para poder ver los que tiene por defecto y al arrancar--
+
+
+
+
