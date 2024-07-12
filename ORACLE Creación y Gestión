@@ -111,9 +111,6 @@ ALTER DATABASE                                                                  
 ADD LOGFILE GROUP 33 ('Javier33.rdo')                                                                  --Podemos marcar el grupo o no ponerlo para que haga autoincremental del grupo--
 SIZE 4M
 
-ALTER SYSTEM CHECKPOINT;
-ALTER DATABASE DROP LOGFILE GROUP 33;                                                                  --Podemos borrar ese grupo--
-
 :Como crear miembros de ese redolog:
 
 ALTER DATABASE
@@ -133,4 +130,8 @@ ALTER DATABASE
 
 ALTER DATABASE OPEN;                                                                                   --Guardaremos los cambios y estos tendran efecto al encender--
 
+:Borramos grupo:
+
+ALTER SYSTEM CHECKPOINT;                                                                               --Realizamos un Checkpoint por si alguno de los que se desea borrar esta en uso--
+ALTER DATABASE DROP LOGFILE GROUP 33;                                                                  --Podemos borrar el grupo especificado--
 
