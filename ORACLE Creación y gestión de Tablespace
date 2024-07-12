@@ -75,3 +75,18 @@ SELECT * FROM dba_tablespaces;                                                  
 SELECT * FROM dba_data_files;                                                                          --Visualiza la información de los ficheros de datos--
 
 SELECT * FROM v$PROCESS;                                                                               --Visualiza la información de los procesos activos--
+
+:Podemos comprobar si el archive log list esta activado o no:
+
+archive log list
+
+SELECT log_mode FROM v$database;
+
+:Para activar el modo Archivado:
+
+SHUTDOWN IMMEDIATE;                                                                                    --Hay que primero apagarla de la manera que se desee--
+STARTUP MOUNT;
+ALTER DATABASE ARCHIVELOG;                                                                             --Se inicia con el modo Archivado--
+ALTER DATABASE OPEN;
+
+
