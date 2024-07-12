@@ -103,3 +103,10 @@ Group Status
 5     CLEARING                                                                                         --Despues de un ALTER DATABASE CLEAR LOGFILE posteriormente cambiara a UNUSED--
 6     CLEARING_CURRENT                                                                                 --Este log esta actualmente siendo limpiado puede estar en este estado si ha ocurrido algun fallo--
 
+:Crear un nuevo grupo de redo:
+
+SELECT * FROM V$LOGFILE;                                                                               --Podemos ver los logfile y sus grupos--
+
+ALTER DATABASE                                                                                         --Deberemos usar SYS para estas cuestiones--
+ADD LOGFILE GROUP 33 ('Javier33.rdo')                                                                  --Podemos marcar el grupo o no ponerlo para que haga autoincremental del grupo--
+SIZE 4M;
