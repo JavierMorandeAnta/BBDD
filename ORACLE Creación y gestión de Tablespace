@@ -3,10 +3,10 @@
 https://localhost:5500/em/login
 
 CREATE TABLESPACE Prueba
-DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'   --Ruta del archivo donde se guarda--
-SIZE 100M                                                           --El tamaño que tendra el fichero y la TABLESPACE--
-AUTOEXTEND ON NEXT                                                  --Si queremos que se extienda automaticamente--
-50M MAXSIZE UNLIMITED;                                              --El limite que hasta donde se extiende--
+DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                     --Ruta del archivo donde se guarda--
+SIZE 100M                                                                                             --El tamaño que tendra el fichero y la TABLESPACE--
+AUTOEXTEND ON NEXT                                                                                    --Si queremos que se extienda automaticamente--
+50M MAXSIZE UNLIMITED;                                                                                --El limite que hasta donde se extiende--
 
 :Asignar esa Tablespace a un usuario creado:
 
@@ -31,25 +31,25 @@ WHERE username = 'JAVIER';
 
 :Poner en Offline/Online o solo lectura la Tablespace:
 
-ALTER TABLESPACE prueba OFFLINE; --Podemos hacer lo mismo con Online--
+ALTER TABLESPACE prueba OFFLINE;                                                                        --Podemos hacer lo mismo con Online--
 
-ALTER TABLESPACE prueba READ ONLY; --Solo lectura--
+ALTER TABLESPACE prueba READ ONLY;                                                                      --Solo lectura--
 
 :Apagar y encender por pasos la database:
 
-SHUTDOWN normal/transactional/inmmediate/abort; --Paramos o apagamos la database--
+SHUTDOWN normal/transactional/inmmediate/abort;                                                         --Paramos o apagamos la database--
 
-STARTUP nomount; --Iniciamos sin montar la database--
+STARTUP nomount;                                                                                        --Iniciamos sin montar la database--
 
-ALTER database mount; --Montarla--
+ALTER database mount;                                                                                   --Montarla--
 
-ALTER database open; --Abrimos la database--
+ALTER database open;                                                                                    --Abrimos la database--
 
 :Podriamos observar los parametros y crear un fichero con ellos:
 
-SHOW PARAMETERS --Poder ver los parametros--
+SHOW PARAMETERS                                                                                         --Poder ver los parametros--
 
-SHOW PARAMETERS recycle --Podemos ver como esta configurada la recyclebin--
+SHOW PARAMETERS recycle                                                                                 --Podemos ver como esta configurada la recyclebin--
 
 CREATE PFILE='C:\app\javier\product\21c\dbhomeXE\database\init.ora' FROM MEMORY;                        --Podemos crear este archivo que es legible y contine los de la memoria--
                                                                     FROM SPFILE;                        --Para poder ver los que tiene por defecto y al arrancar--
@@ -60,7 +60,7 @@ STARTUP PFFILE = 'C:\app\javier\product\21c\dbhomeXE\database\init.ora'; --Podem
 
 SELECT * FROM recyclebin;                                                                               --Te dara todo el contenido borrado y un identificador--
 
-SELECT * FROM "Codigo de identificador que te proporciona el comando anterior junto al nombre borrado"; --Veremos el contenido de esa tabla borrada"
+SELECT * FROM "Codigo de identificador que te proporciona el comando anterior junto al nombre borrado"; --Veremos el contenido de esa tabla borrada"--
 
 CREATE TABLE NOMBRE AS SELECT * FROM "Codigo de identificador"                                          --Restauramos la tabla--
 
@@ -73,3 +73,5 @@ SELECT * FROM v$logfile;                                                        
 SELECT * FROM dba_tablespaces;                                                                         --Visualiza la información de las Tablespace creadas--
 
 SELECT * FROM dba_data_files;                                                                          --Visualiza la información de los ficheros de datos--
+
+SELECT * FROM v$PROCESS;                                                                               --Visualiza la información de los procesos activos--
