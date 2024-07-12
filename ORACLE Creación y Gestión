@@ -5,10 +5,10 @@ https://localhost:5500/em/login
 :CREACION Y GESTION DE TABLESPACE:
 
 CREATE TABLESPACE Prueba
-DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                        --Ruta del archivo donde se guarda--
-SIZE 100M                                                                                                --El tamaño que tendra el fichero y la TABLESPACE--
-AUTOEXTEND ON NEXT                                                                                       --Si queremos que se extienda automaticamente--
-50M MAXSIZE UNLIMITED;                                                                                   --El limite que hasta donde se extiende--
+DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                       --Ruta del archivo donde se guarda--
+SIZE 100M                                                                                               --El tamaño que tendra el fichero y la TABLESPACE--
+AUTOEXTEND ON NEXT                                                                                      --Si queremos que se extienda automaticamente--
+50M MAXSIZE UNLIMITED;                                                                                  --El limite que hasta donde se extiende--
 
 :Asignar esa Tablespace a un usuario creado:
 
@@ -57,6 +57,7 @@ create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA
 
 
 
+
 :Apagar y encender por pasos la database:
 
 SHUTDOWN normal/transactional/inmmediate/abort;                                                         --Paramos o apagamos la database--
@@ -88,15 +89,15 @@ CREATE TABLE NOMBRE AS SELECT * FROM "Codigo de identificador"                  
 
 :Consultar informacion en el diccionario:
 
-SELECT * FROM v$controlfile;                                                                           --Visualiza la información de los ficheros de control--
+SELECT * FROM v$controlfile;                                                                            --Visualiza la información de los ficheros de control--
 
-SELECT * FROM v$logfile;                                                                               --Visualiza la información de los ficheros Redo--
+SELECT * FROM v$logfile;                                                                                --Visualiza la información de los ficheros Redo--
 
-SELECT * FROM dba_tablespaces;                                                                         --Visualiza la información de las Tablespace creadas--
+SELECT * FROM dba_tablespaces;                                                                          --Visualiza la información de las Tablespace creadas--
 
-SELECT * FROM dba_data_files;                                                                          --Visualiza la información de los ficheros de datos--
+SELECT * FROM dba_data_files;                                                                           --Visualiza la información de los ficheros de datos--
 
-SELECT * FROM v$PROCESS;                                                                               --Visualiza la información de los procesos activos--
+SELECT * FROM v$PROCESS;                                                                                --Visualiza la información de los procesos activos--
 
 :Podemos comprobar si el archive log list esta activado o no:
 
@@ -106,31 +107,31 @@ SELECT log_mode FROM v$database;
 
 :Para activar el modo Archivado:
 
-SHUTDOWN IMMEDIATE;                                                                                    --Hay que primero apagarla de la manera que se desee--
+SHUTDOWN IMMEDIATE;                                                                                     --Hay que primero apagarla de la manera que se desee--
 STARTUP MOUNT;
-ALTER DATABASE ARCHIVELOG;                                                                             --Se inicia con el modo Archivado--
+ALTER DATABASE ARCHIVELOG;                                                                              --Se inicia con el modo Archivado--
 ALTER DATABASE OPEN;
 
-Show parameter log_archive_format;                                                                     --Esto nos dira que formato tiene--
+Show parameter log_archive_format;                                                                      --Esto nos dira que formato tiene--
 
-ALTER SYSTEM SWITCH LOGFILE;                                                                           --Puedes forzar que pase de fichero para que el que este en 2 posicion pase a la 1 y la 1--
+ALTER SYSTEM SWITCH LOGFILE;                                                                            --Puedes forzar que pase de fichero para que el que este en 2 posicion pase a la 1 y la 1--
 
-SELECT group#, status from v$log;                                                                      --Comprobaremos el status de esos Log--
+SELECT group#, status from v$log;                                                                       --Comprobaremos el status de esos Log--
 
 Group Status
-1	    CURRENT                                                                                          --Es en el que se escribira--
-2	    ACTIVE                                                                                           --Aun no se ha escrito los datos pero estan en el buffer este sirve para en caso de caida poder restaurarse--
-3	    INACTIVE                                                                                         --Ya no se escriben cambios en el pero puede ser necesario para restaurar y cuando se archiva--
-4     UNUSED                                                                                           --Estado de los que se acaban de añadir o cuando se hace un RESETLOGS y nunca ha sido escrito en el--
-5     CLEARING                                                                                         --Despues de un ALTER DATABASE CLEAR LOGFILE posteriormente cambiara a UNUSED--
-6     CLEARING_CURRENT                                                                                 --Este log esta actualmente siendo limpiado puede estar en este estado si ha ocurrido algun fallo--
+1	    CURRENT                                                                                           --Es en el que se escribira--
+2	    ACTIVE                                                                                            --Aun no se ha escrito los datos pero estan en el buffer este sirve para en caso de caida poder restaurarse--
+3	    INACTIVE                                                                                          --Ya no se escriben cambios en el pero puede ser necesario para restaurar y cuando se archiva--
+4     UNUSED                                                                                            --Estado de los que se acaban de añadir o cuando se hace un RESETLOGS y nunca ha sido escrito en el--
+5     CLEARING                                                                                          --Despues de un ALTER DATABASE CLEAR LOGFILE posteriormente cambiara a UNUSED--
+6     CLEARING_CURRENT                                                                                  --Este log esta actualmente siendo limpiado puede estar en este estado si ha ocurrido algun fallo--
 
 :Crear un nuevo grupo de redo:
 
-SELECT * FROM V$LOGFILE;                                                                               --Podemos ver los logfile y sus grupos--
+SELECT * FROM V$LOGFILE;                                                                                --Podemos ver los logfile y sus grupos--
 
-ALTER DATABASE                                                                                         --Deberemos usar SYS para estas cuestiones--
-ADD LOGFILE GROUP 33 ('Javier33.rdo')                                                                  --Podemos marcar el grupo o no ponerlo para que haga autoincremental del grupo--
+ALTER DATABASE                                                                                          --Deberemos usar SYS para estas cuestiones--
+ADD LOGFILE GROUP 33 ('Javier33.rdo')                                                                   --Podemos marcar el grupo o no ponerlo para que haga autoincremental del grupo--
 SIZE 4M
 
 :Como crear miembros de ese redolog:
@@ -141,19 +142,19 @@ TO GROUP 33;
 
 :Renombrar los archivos de REDO:
 
-move C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG                                                  --Moveremos a otro lugar para posteriormente renombrarlo--
+move C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG                                                   --Moveremos a otro lugar para posteriormente renombrarlo--
 C:\APP\JAVIER\PRODUCT\21C\ORADATA\XEPDB1\REDO04.LOG 
 
 SHUTDOWN
 
 ALTER DATABASE 
-  RENAME FILE 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG',                                      --Renombraremos el fichero antiguo con el nombre adecuado del nuevo fichero--
+  RENAME FILE 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG',                                       --Renombraremos el fichero antiguo con el nombre adecuado del nuevo fichero--
            TO 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XEPDB1\REDO04.LOG';
 
-ALTER DATABASE OPEN;                                                                                   --Guardaremos los cambios y estos tendran efecto al encender--
+ALTER DATABASE OPEN;                                                                                    --Guardaremos los cambios y estos tendran efecto al encender--
 
 :Borramos grupo:
 
-ALTER SYSTEM CHECKPOINT;                                                                               --Realizamos un Checkpoint por si alguno de los que se desea borrar esta en uso--
-ALTER DATABASE DROP LOGFILE GROUP 33;                                                                  --Podemos borrar el grupo especificado--
+ALTER SYSTEM CHECKPOINT;                                                                                --Realizamos un Checkpoint por si alguno de los que se desea borrar esta en uso--
+ALTER DATABASE DROP LOGFILE GROUP 33;                                                                   --Podemos borrar el grupo especificado--
 
