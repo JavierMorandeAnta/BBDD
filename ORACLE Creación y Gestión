@@ -109,4 +109,14 @@ SELECT * FROM V$LOGFILE;                                                        
 
 ALTER DATABASE                                                                                         --Deberemos usar SYS para estas cuestiones--
 ADD LOGFILE GROUP 33 ('Javier33.rdo')                                                                  --Podemos marcar el grupo o no ponerlo para que haga autoincremental del grupo--
-SIZE 4M;
+SIZE 4M
+
+ALTER SYSTEM CHECKPOINT;
+ALTER DATABASE DROP LOGFILE GROUP 33;                                                                  --Podemos borrar ese grupo--
+
+:Como crear miembros de ese redolog:
+
+ALTER DATABASE
+ADD LOGFILE MEMBER 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG'
+TO GROUP 33;
+
