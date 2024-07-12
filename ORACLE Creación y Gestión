@@ -20,7 +20,7 @@ QUOTA UNLIMITED ON prueba;
 --Si el usuario ya esta creado podemos alterarlo con un administrador--
 
 ALTER USER nombre_usuario
-DEFAULT TABLESPACE prueba -- Nombre de la Tablespace--
+DEFAULT TABLESPACE prueba                                                                              -- Nombre de la Tablespace--
 QUOTA UNLIMITED ON prueba;
 
 --Revisar que Tablaespace utiliza el usuario---
@@ -54,7 +54,7 @@ SHOW PARAMETERS recycle                                                         
 CREATE PFILE='C:\app\javier\product\21c\dbhomeXE\database\init.ora' FROM MEMORY;                        --Podemos crear este archivo que es legible y contine los de la memoria--
                                                                     FROM SPFILE;                        --Para poder ver los que tiene por defecto y al arrancar--
 
-STARTUP PFFILE = 'C:\app\javier\product\21c\dbhomeXE\database\init.ora'; --Podemos inicar con ese parametro de configuraciones una vez apagada--
+STARTUP PFFILE = 'C:\app\javier\product\21c\dbhomeXE\database\init.ora';                                --Podemos inicar con ese parametro de configuraciones una vez apagada--
 
 :Consultar papelera para poder restaurar cuestiones:
 
@@ -119,4 +119,18 @@ ALTER DATABASE DROP LOGFILE GROUP 33;                                           
 ALTER DATABASE
 ADD LOGFILE MEMBER 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG'
 TO GROUP 33;
+
+:Renombrar los archivos de REDO:
+
+move C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG                                                  --Moveremos a otro lugar para posteriormente renombrarlo--
+C:\APP\JAVIER\PRODUCT\21C\ORADATA\XEPDB1\REDO04.LOG 
+
+SHUTDOWN
+
+ALTER DATABASE 
+  RENAME FILE 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XE\REDO033.LOG',                                      --Renombraremos el fichero antiguo con el nombre adecuado del nuevo fichero--
+           TO 'C:\APP\JAVIER\PRODUCT\21C\ORADATA\XEPDB1\REDO04.LOG';
+
+ALTER DATABASE OPEN;                                                                                   --Guardaremos los cambios y estos tendran efecto al encender--
+
 
