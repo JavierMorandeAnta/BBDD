@@ -2,6 +2,8 @@
 
 https://localhost:5500/em/login
 
+:CREACION Y GESTION DE TABLESPACE:
+
 CREATE TABLESPACE Prueba
 DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                        --Ruta del archivo donde se guarda--
 SIZE 100M                                                                                                --El tamaño que tendra el fichero y la TABLESPACE--
@@ -34,6 +36,27 @@ WHERE username = 'JAVIER';
 ALTER TABLESPACE prueba OFFLINE;                                                                        --Podemos hacer lo mismo con Online--
 
 ALTER TABLESPACE prueba READ ONLY;                                                                      --Solo lectura--
+
+:Mover una TABLESPACE para poder cagarla en otro ordenador como enchufable:
+
+show parameter compatible                                                                               --Te muestra la compatiblidad actual de la Tablespace--
+
+SELECT platform_id, platform_name, endian_format from v$transportable_platform;                         --Con esta sentencia conoceremos mas acerca del Endian formato importante a la hora de migar a otros S.O--
+
+select platform_name our_platform, endian_format our_endian_format                                      --Conoce directamente el endian format que utilia tu S.O--
+from v$transportable_platform join v$database using (platform_name);
+
+select file_name, blocks, tablespace_name from dba_data_files;                                          --Conocer la ruta donde se guarda esa Tablespace--
+
+:Creacion de Directorio:
+
+Create directory source_pump_directory as C:\source;                                                    --Podemos crear un nuevo directorio o especificar uno ya creado en la ruta
+
+create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA                        --Crearemos uno en la ruta especificada--
+
+
+
+
 
 :Apagar y encender por pasos la database:
 
