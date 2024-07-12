@@ -57,7 +57,6 @@ create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA
 
 
 
-
 :Apagar y encender por pasos la database:
 
 SHUTDOWN normal/transactional/inmmediate/abort;                                                         --Paramos o apagamos la database--
