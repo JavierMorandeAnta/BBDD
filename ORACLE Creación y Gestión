@@ -5,10 +5,10 @@ https://localhost:5500/em/login
 :CREACION Y GESTION DE TABLESPACE:
 
 CREATE TABLESPACE Prueba
-DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                       --Ruta del archivo donde se guarda--
-SIZE 100M                                                                                               --El tamaño que tendra el fichero y la TABLESPACE--
-AUTOEXTEND ON NEXT                                                                                      --Si queremos que se extienda automaticamente--
-50M MAXSIZE UNLIMITED;                                                                                  --El limite que hasta donde se extiende--
+DATAFILE 'C:/APP/JAVIER/PRODUCT/21C/ORADATA/XE/XEPDB1/Prueba.dbf'                                      --Ruta del archivo donde se guarda--
+SIZE 100M                                                                                              --El tamaño que tendra el fichero y la TABLESPACE--
+AUTOEXTEND ON NEXT                                                                                     --Si queremos que se extienda automaticamente--
+50M MAXSIZE UNLIMITED;                                                                                 --El limite que hasta donde se extiende--
 
 :Asignar esa Tablespace a un usuario creado:
 
@@ -22,7 +22,7 @@ QUOTA UNLIMITED ON prueba;
 --Si el usuario ya esta creado podemos alterarlo con un administrador--
 
 ALTER USER nombre_usuario
-DEFAULT TABLESPACE prueba                                                                               -- Nombre de la Tablespace--
+DEFAULT TABLESPACE prueba                                                                              -- Nombre de la Tablespace--
 QUOTA UNLIMITED ON prueba;
 
 --Revisar que Tablaespace utiliza el usuario---
@@ -33,31 +33,33 @@ WHERE username = 'JAVIER';
 
 :Poner en Offline/Online o solo lectura la Tablespace:
 
-ALTER TABLESPACE prueba OFFLINE;                                                                        --Podemos hacer lo mismo con Online--
+ALTER TABLESPACE prueba OFFLINE;                                                                       --Podemos hacer lo mismo con Online--
 
-ALTER TABLESPACE prueba READ ONLY;                                                                      --Solo lectura--
+ALTER TABLESPACE prueba READ ONLY;                                                                     --Solo lectura--
 
 :Mover una TABLESPACE para poder cagarla en otro ordenador como enchufable:
 
-show parameter compatible                                                                               --Te muestra la compatiblidad actual de la Tablespace--
+show parameter compatible                                                                              --Te muestra la compatiblidad actual de la Tablespace--
 
-SELECT platform_id, platform_name, endian_format from v$transportable_platform;                         --Con esta sentencia conoceremos mas acerca del Endian formato importante a la hora de migar a otros S.O--
+SELECT platform_id, platform_name, endian_format from v$transportable_platform;                        --Con esta sentencia conoceremos mas acerca del Endian formato importante a la hora de migar a otros S.O--
 
-select platform_name our_platform, endian_format our_endian_format                                      --Conoce directamente el endian format que utilia tu S.O--
+select platform_name our_platform, endian_format our_endian_format                                     --Conoce directamente el endian format que utilia tu S.O--
 from v$transportable_platform join v$database using (platform_name);
 
-select file_name, blocks, tablespace_name from dba_data_files;                                          --Conocer la ruta donde se guarda esa Tablespace--
+select file_name, blocks, tablespace_name from dba_data_files;                                         --Conocer la ruta donde se guarda esa Tablespace--
 
 :Creacion de Directorio:
 
-Create directory source_pump_directory as C:\source;                                                    --Podemos crear un nuevo directorio o especificar uno ya creado en la ruta
+Create directory source_pump_directory as C:\source;                                                   --Podemos crear un nuevo directorio o especificar uno ya creado en la ruta
 
-create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA                        --Crearemos uno en la ruta especificada--
-
-
+create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA                       --Crearemos uno en la ruta especificada--
 
 
 
+
+:Creacion de una vista:
+
+CREATE VIEW NOTAS AS ( consulta SQL );                                                                  --En el apartado de la sentencia incluiremos los datos que queremos posteriormente visualizar--
 
 :Creacion de un sinonimo:
 
