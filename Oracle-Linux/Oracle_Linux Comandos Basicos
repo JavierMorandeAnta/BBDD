@@ -25,7 +25,7 @@ rlwrap sqlplus sys@localhost/XEPDB1 as sysdba
 SELECT *
 FROM dictionary;
 
-:Ver tablas del dictionary:
+:Ver cuantas tablas tiene el dictionary:
 
 SELECT COUNT(*) FROM DBA_OBJECTS WHERE OBJECT_TYPE = 'TABLE';
 
