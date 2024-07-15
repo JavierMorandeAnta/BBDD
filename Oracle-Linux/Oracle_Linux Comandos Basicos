@@ -29,6 +29,12 @@ FROM dictionary;
 
 SELECT COUNT(*) FROM DBA_OBJECTS WHERE OBJECT_TYPE = 'TABLE';
 
+:Consultar tablas de un usuario:
+
+Select TABLE_NAME 
+from DBA_TABLES 
+where owner='JAVIER';
+
 :Ver Usuarios creados:
 
 SELECT COUNT(*)
