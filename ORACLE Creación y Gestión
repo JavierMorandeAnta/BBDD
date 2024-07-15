@@ -57,6 +57,7 @@ create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA
 
 
 
+
 :Creacion de una vista:
 
 CREATE VIEW NOTAS AS ( consulta SQL );                                                                  --En el apartado de la sentencia incluiremos los datos que queremos posteriormente visualizar--
@@ -80,6 +81,18 @@ START WITH 1                                                                    
 INCREMENT BY 1                                                                                          --Cuanto incrementa la secuencia--
 NOCACHE
 NOCYCLE;
+
+:Creacion de TRIGGER:
+
+CREATE OR REPLACE TRIGGER trigger_auto                                                                  --Creamos y asignamos un nombre--
+BEFORE INSERT ON "ELNOMBREDELATABLA"                                                                    --Decimos en que lugar tomara forma este trigger--
+FOR EACH ROW
+BEGIN
+  IF :NEW.id IS NULL THEN                                                                               --Introducimos el codigo PL/SQL--
+    SELECT SEQUENCE NOTAS_seq.NEXTVAL INTO :NEW.id FROM dual;                                           --Hacemos alusion a la secuencia anteriormente creada para que la realice en DUAL--
+  END IF;
+END;
+/                                                                                                       --El codigo PL/SQL finaliza con / --
 
 :Apagar y encender por pasos la database:
 
