@@ -1,0 +1,6 @@
+:Podemos conocer el plan o la ruta que realiza nuestra consulta:
+
+EXPLAIN PLAN FOR select * from NOTAS;
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);                                    --Para conocer y ver esa ruta--
+
