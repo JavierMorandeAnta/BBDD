@@ -58,6 +58,19 @@ create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA
 
 
 
+
+:Creacion de un sinonimo:
+
+CREATE SYNONYM NOTAS FOR JAVIER.NOTAS;                                                                  --Crearemos un sinonimo de una tabla ya creada para poder hacerla privada a ese usuario y asi referirnos a el--
+
+DROP SYNONYM NOTAS;                                                                                     --Podemos borrar esos indices anexados a la tabla NOTAS--
+
+--Podemos consultar en todo momento que tablas tiene un usuario con este comando--
+
+select TABLE_NAME 
+from DBA_TABLES 
+where owner='JAVIER';
+
 :Apagar y encender por pasos la database:
 
 SHUTDOWN normal/transactional/inmmediate/abort;                                                         --Paramos o apagamos la database--
