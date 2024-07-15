@@ -155,12 +155,12 @@ ALTER SYSTEM SWITCH LOGFILE;                                                    
 SELECT group#, status from v$log;                                                                       --Comprobaremos el status de esos Log--
 
 Group Status
-1	    CURRENT                                                                                           --Es en el que se escribira--
-2	    ACTIVE                                                                                            --Aun no se ha escrito los datos pero estan en el buffer este sirve para en caso de caida poder restaurarse--
-3	    INACTIVE                                                                                          --Ya no se escriben cambios en el pero puede ser necesario para restaurar y cuando se archiva--
-4     UNUSED                                                                                            --Estado de los que se acaban de añadir o cuando se hace un RESETLOGS y nunca ha sido escrito en el--
-5     CLEARING                                                                                          --Despues de un ALTER DATABASE CLEAR LOGFILE posteriormente cambiara a UNUSED--
-6     CLEARING_CURRENT                                                                                  --Este log esta actualmente siendo limpiado puede estar en este estado si ha ocurrido algun fallo--
+1	CURRENT                                                                                               --Es en el que se escribira--
+2	ACTIVE                                                                                                --Aun no se ha escrito los datos pero estan en el buffer este sirve para en caso de caida poder restaurarse--
+3	INACTIVE                                                                                              --Ya no se escriben cambios en el pero puede ser necesario para restaurar y cuando se archiva--
+4 UNUSED                                                                                                --Estado de los que se acaban de añadir o cuando se hace un RESETLOGS y nunca ha sido escrito en el--
+5 CLEARING                                                                                              --Despues de un ALTER DATABASE CLEAR LOGFILE posteriormente cambiara a UNUSED--
+6 CLEARING_CURRENT                                                                                      --Este log esta actualmente siendo limpiado puede estar en este estado si ha ocurrido algun fallo--
 
 :Crear un nuevo grupo de redo:
 
