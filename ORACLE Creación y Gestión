@@ -73,6 +73,14 @@ select TABLE_NAME
 from DBA_TABLES 
 where owner='JAVIER';
 
+:Creacion de Secuencias:
+
+CREATE SEQUENCE NOTAS_seq
+START WITH 1                                                                                            --Donde empieza la secuencia--
+INCREMENT BY 1                                                                                          --Cuanto incrementa la secuencia--
+NOCACHE
+NOCYCLE;
+
 :Apagar y encender por pasos la database:
 
 SHUTDOWN normal/transactional/inmmediate/abort;                                                         --Paramos o apagamos la database--
