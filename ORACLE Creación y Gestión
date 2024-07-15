@@ -61,7 +61,7 @@ create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA
 
 :Creacion de un sinonimo:
 
-CREATE SYNONYM NOTAS FOR JAVIER.NOTAS;                                                                  --Crearemos un sinonimo de una tabla ya creada para poder hacerla privada a ese usuario y asi referirnos a el--
+CREATE SYNONYM JAVIER.NOTiTAS FOR JAVIER.NOTAS;                                                         --Crearemos un sinonimo de una tabla ya creada para poder hacerla privada a ese usuario y asi referirnos a el--
 
 DROP SYNONYM NOTAS;                                                                                     --Podemos borrar esos indices anexados a la tabla NOTAS--
 
