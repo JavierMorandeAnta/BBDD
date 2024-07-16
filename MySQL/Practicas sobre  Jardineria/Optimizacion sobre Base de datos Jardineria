@@ -53,3 +53,7 @@ SELECT *
 FROM cliente INNER JOIN pedido
 ON cliente.codigo_cliente = pedido.codigo_cliente
 WHERE cliente.nombre_cliente LIKE 'A%';
+
+--Creacion de indice donde recorre los mayores row--
+
+create index idx_codigo_cliente on cliente(nombre_cliente)
