@@ -32,7 +32,24 @@ WHERE MATCH(nombre, descripcion) AGAINST ('acero');
 
 :Optimizar esta consulta:
 
+SELECT AVG(total)
+FROM pago
+WHERE fecha_pago >= '2008-01-01' AND fecha_pago <= '2008-12-31';
 
+--Podemos optimizarla Utilizando YEAR--
 
+SELECT AVG(total)
+FROM pago
+WHERE YEAR(fecha_pago) = 2008;
 
+--O con un Indice--
 
+create index FECHA_PAGO on pago(FECHA_PAGO);
+
+:Optimizar esta consulta:
+
+explain
+SELECT *
+FROM cliente INNER JOIN pedido
+ON cliente.codigo_cliente = pedido.codigo_cliente
+WHERE cliente.nombre_cliente LIKE 'A%';
