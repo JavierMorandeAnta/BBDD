@@ -69,3 +69,8 @@ SHOW VARIABLES LIKE 'pid_file';                                           --Pode
 slow_query_log = 1
 
 slow_query_log_file = /var/log/mysql/mysql-slow.log                       --Podemos especificar la ruta donde se guardan las cuestiones--
+
+long_query_time = 2                                                       --El tiempo que consideramos una consulta lenta--
+
+log-queries-not-using-indexes                                             --Guarda aquellas consultas que no están haciendo uso de índices--
+
