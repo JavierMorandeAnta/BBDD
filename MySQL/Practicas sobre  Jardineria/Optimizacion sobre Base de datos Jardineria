@@ -74,3 +74,19 @@ long_query_time = 2                                                       --El t
 
 log-queries-not-using-indexes                                             --Guarda aquellas consultas que no están haciendo uso de índices--
 
+:Podemos ver estas variables usando workbench:
+
+SHOW GLOBAL VARIABLES LIKE 'slow_query_log';
+SHOW GLOBAL VARIABLES LIKE 'slow_query_log_file';
+SHOW GLOBAL VARIABLES LIKE 'long_query_time';
+SHOW GLOBAL VARIABLES LIKE 'log_queries_not_using_indexes';
+
+--Y activarlas--
+
+SET GLOBAL slow_query_log = 1;
+SET GLOBAL long_query_time = 2;
+SET GLOBAL slow_query_log_file = 'C:/mysql/data/slow';
+SET GLOBAL log_queries_not_using_indexes = 1;
+
+
+
