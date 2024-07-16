@@ -1,1 +1,38 @@
+Use Jardineria;
+
+:Optimizar esta consulta:
+
+EXPLAIN SELECT nombre_contacto, telefono
+FROM cliente
+WHERE pais = 'France';
+
+--Vemos que en ella el select_type no incluye un indice haciendo que tenga que realizar una busqueda en todas las rows--
+
+--Podemos realizar un indice sobre una columna para optimizar la consulta--
+
+SHOW INDEX FROM cliente;
+
+CREATE INDEX idx_pais ON cliente(pais);
+
+:Optimizar esta consulta:
+
+EXPLAIN SELECT *
+FROM producto
+WHERE nombre LIKE '%acero%' OR descripcion LIKE '%acero%';
+
+--Podemos crear un indice por el texto--
+
+CREATE FULLTEXT INDEX idx_nombre_descripcion ON producto(nombre, descripcion);
+
+--Y realizar la consulta optimizada--
+
+EXPLAIN SELECT *
+FROM producto
+WHERE MATCH(nombre, descripcion) AGAINST ('acero');
+
+:Optimizar esta consulta:
+
+
+
+
 
