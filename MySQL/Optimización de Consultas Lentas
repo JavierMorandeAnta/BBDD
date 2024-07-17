@@ -1,0 +1,33 @@
+:Con este PL/SQL podemos crear una base de datos llamada "Millon" con la que trabajaremos y que tiene un millon de datos:
+
+CREATE database Millon;
+
+CREATE TABLE IF NOT EXISTS secuencial_nif (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    secuencial INT NOT NULL,
+    hora DATETIME NOT NULL,
+    nif VARCHAR(9) NOT NULL
+); 
+
+DELIMITER //
+
+CREATE PROCEDURE insertar_1000000_filas()
+BEGIN
+     DECLARE i INT DEFAULT 1;
+     DECLARE letras CHAR(23) DEFAULT 'TRWAGMYFPDXBNJZSQVHLCKE';
+     DECLARE nif_num INT;
+     DECLARE nif_letra CHAR(1);
+WHILE i <= 1000000 DO
+     SET nif_num = FLOOR(RAND() * 1000000);
+     SET nif_letra = SUBSTRING(letras, (nif_num % 23) + 1, 1);
+INSERT INTO secuencial_nif (secuencial, hora, nif)
+     VALUES (i, NOW(), CONCAT(LPAD(nif_num, 8, '0'), nif_letra));
+SET i = i + 1;
+    END WHILE;
+END // 
+
+/* Aqui llamamos a el procedimiento realizado anteriormente *\
+DELIMITER ;
+Call insertar_1000000_filas();
+
+
