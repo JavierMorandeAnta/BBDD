@@ -54,12 +54,6 @@ Create directory source_pump_directory as C:\source;                            
 
 create directory source_datafiles_directory as C:\APP\JAVIER\PRODUCT\21C\ORADATA                       --Crearemos uno en la ruta especificada--
 
-
-
-
-
-
-
 :Creacion de una vista:
 
 CREATE VIEW NOTAS AS ( consulta SQL );                                                                  --En el apartado de la sentencia incluiremos los datos que queremos posteriormente visualizar--
