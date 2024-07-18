@@ -68,6 +68,12 @@ ENABLE;
 
 SET GLOBAL event_scheduler = OFF;                               --Detener todos los eventos--
 
+:O editarlo de forma completa:
+
+ALTER EVENT insertion_event 
+ON SCHEDULE EVERY 1 MINUTE STARTS 'FECHA DESEADA'               --De igual manera a la creación solo incluyendo ALTER EVENT--                               
+DO INSERT INTO test VALUES ('Evento 1', NOW());                 
+
 :Evento complejo modificable:
 
 CREATE
