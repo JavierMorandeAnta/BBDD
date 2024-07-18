@@ -71,3 +71,12 @@ BEGIN
 END;
 / 
 
+:Pirvilegios necesarios:
+
+GRANT INSERT ON JAVIER.JOBS TO your_user;
+GRANT CREATE PROCEDURE TO your_user;
+GRANT EXECUTE ON DBMS_SCHEDULER TO your_user;
+
+--En oracle solo las tiene SYS estos privilegios--
+
+
