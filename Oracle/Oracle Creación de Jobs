@@ -1,1 +1,73 @@
-aaa
+:Administración de Jobs:
+
+:Podemos visualizar el numero de Jobs que se puede crear y este no debe ser nunca menor a los Jobs:
+
+show parameter job_queue_processes
+
+ALTER SYSTEM SET job_queue_processes = num_queue                        --Podemos ajustar el numero de Jobs totales--
+
+:Podemos comprobar los Jobs desde sys:
+
+select * from dba_jobs;
+
+select * from all_scheduler_jobs;                                       --Consultar todos los Jobs existentes--
+
+select * from all_scheduler_job_log order by log_date desc;             --Consultar log de ejecución de jobs--
+
+select * from all_scheduler_running_jobs;                               --Consultar los jobs que están en ejecución--
+
+exec dbms_scheduler.stop_jop('USER.JOB');                               --Detener un job--
+
+exec dbms_scheduler.stop_job('USER.JOB', true);                         --Se puede forzar la parada de un job ejecutando la siguiente query como usuario system--
+
+exec dbms_scheduler.disable('USER.JOB');                                --Deshabilitar un Job--
+
+exec dbms_scheduler.disable('USER.JOB', true);                          --Se puede forzar la deshabilitación de un job ejecutando la siguiente query como system--
+
+exec dbms_scheduler.enable('USER.JOB');                                 --Habilitar un Job--
+
+exec dbms_scheduler.run_job('USER.JOB');                                --Arrancar un Job--
+
+:Creación de Jobs:
+
+:Primero crearemos el procedimiento indicando lo que tiene que realizar:
+
+CREATE OR REPLACE PROCEDURE inserthora AS
+BEGIN
+ INSERT INTO JAVIER.JOBS VALUES ('AQUI X', SYSDATE);
+ COMMIT;
+END;
+/
+
+:Posteriormente llamaremos a ese procedimiento:
+
+BEGIN
+  DBMS_SCHEDULER.CREATE_JOB (
+   job_name           =>  'inserthora',
+   job_type           =>  'STORED_PROCEDURE',
+   job_action         =>  'inserthora',
+   start_date         =>  'SYSTIMESTAMP',
+   repeat_interval    =>  'FREQ=MINUTELY;INTERVAL=1', /* every other day */
+   end_date           =>   SYSDATE+1,
+   auto_drop          =>   FALSE,
+   comments           =>  'EL Primer Job');
+END;
+/
+
+:Podemos hacer este mismo job sin hacer el procedimiento incluyendo el PLSQL directamente:
+
+BEGIN
+    DBMS_SCHEDULER.create_job (
+        job_name        => 'insertion_event_job',
+        job_type        => 'PLSQL_BLOCK',
+        job_action      => '
+            BEGIN
+                INSERT INTO JOBS (event_name, event_time) VALUES (''Evento 1'', SYSTIMESTAMP);
+            END;',
+        start_date      => SYSTIMESTAMP,
+        repeat_interval => 'FREQ=MINUTELY; INTERVAL=1',
+        enabled         => TRUE
+    );
+END;
+/ 
+
