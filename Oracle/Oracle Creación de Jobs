@@ -48,6 +48,7 @@ BEGIN
    job_action         =>  'inserthora',
    start_date         =>  'SYSTIMESTAMP',
    repeat_interval    =>  'FREQ=MINUTELY;INTERVAL=1', /* every other day */
+   enabled            =>   TRUE,
    end_date           =>   SYSDATE+1,
    auto_drop          =>   FALSE,
    comments           =>  'EL Primer Job');
