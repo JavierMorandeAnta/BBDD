@@ -4,29 +4,29 @@
 
 show parameter job_queue_processes
 
-ALTER SYSTEM SET job_queue_processes = num_queue                        --Podemos ajustar el numero de Jobs totales--
+ALTER SYSTEM SET job_queue_processes = num_queue                        -- Podemos ajustar el numero de Jobs totales
 
 :Podemos comprobar los Jobs desde sys:
 
 select * from dba_jobs;
 
-select * from all_scheduler_jobs;                                       --Consultar todos los Jobs existentes--
+select * from all_scheduler_jobs;                                       -- Consultar todos los Jobs existentes
 
-select * from all_scheduler_job_log order by log_date desc;             --Consultar log de ejecución de jobs--
+select * from all_scheduler_job_log order by log_date desc;             -- Consultar log de ejecución de jobs
 
-select * from all_scheduler_running_jobs;                               --Consultar los jobs que están en ejecución--
+select * from all_scheduler_running_jobs;                               -- Consultar los jobs que están en ejecución
 
-exec dbms_scheduler.stop_jop('USER.JOB');                               --Detener un job--
+exec dbms_scheduler.stop_jop('USER.JOB');                               -- Detener un job
 
-exec dbms_scheduler.stop_job('USER.JOB', true);                         --Se puede forzar la parada de un job ejecutando la siguiente query como usuario system--
+exec dbms_scheduler.stop_job('USER.JOB', true);                         -- Se puede forzar la parada de un job ejecutando la siguiente query como usuario system
 
-exec dbms_scheduler.disable('USER.JOB');                                --Deshabilitar un Job--
+exec dbms_scheduler.disable('USER.JOB');                                -- Deshabilitar un Job
 
-exec dbms_scheduler.disable('USER.JOB', true);                          --Se puede forzar la deshabilitación de un job ejecutando la siguiente query como system--
+exec dbms_scheduler.disable('USER.JOB', true);                          -- Se puede forzar la deshabilitación de un job ejecutando la siguiente query como system
 
-exec dbms_scheduler.enable('USER.JOB');                                 --Habilitar un Job--
+exec dbms_scheduler.enable('USER.JOB');                                 -- Habilitar un Job
 
-exec dbms_scheduler.run_job('USER.JOB');                                --Arrancar un Job--
+exec dbms_scheduler.run_job('USER.JOB');                                -- Arrancar un Job
 
 :Creación de Jobs:
 
