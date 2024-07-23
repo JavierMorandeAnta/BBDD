@@ -2,5 +2,5 @@
 
 EXPLAIN PLAN FOR select * from NOTAS;
 
-SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);                                    --Para conocer y ver esa ruta--
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);                                    -- Para conocer y ver esa ruta
 
