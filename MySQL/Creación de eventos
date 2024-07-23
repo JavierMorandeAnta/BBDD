@@ -11,11 +11,11 @@ SET GLOBAL event_scheduler = ON;
 
 :Incluiremos un evento:
 
-CREATE EVENT insertion_event                                      --Indicas el nombre del evento--
-ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE              --El intervalo y el tiempo que tarda--
-DO INSERT INTO test VALUES ('Evento 1', NOW());                   --Lo que hace el evento--
+CREATE EVENT insertion_event                                      -- Indicas el nombre del evento
+ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE              -- El intervalo y el tiempo que tarda
+DO INSERT INTO test VALUES ('Evento 1', NOW());                   -- Lo que hace el evento
 
-ON SCHEDULE AT '2018-12-31 12:00:00'                              --Podemos incluir en esa columna año,mes y dia ademas de hora donde se ejecutara--
+ON SCHEDULE AT '2018-12-31 12:00:00'                              -- Podemos incluir en esa columna año,mes y dia ademas de hora donde se ejecutara
 
 :Si se ejecutará más de una sentencia SQL debemos de apoyarnos de BEGIN y END:
 
@@ -54,24 +54,24 @@ CALL store_procedure();
 :Eventos periódicos:
 
 CREATE EVENT insertion_event
-ON SCHEDULE EVERY 1 MINUTE STARTS '2018-07-07 18:30:00'         --Cada cuanto y cuando empieza--
-ENDS '2018-07-07 19:00:00'                                      --Podemos marcar cuando finaliza el evento--
-DO INSERT INTO test VALUES ('Evento 1', NOW());                 --Lo que realiza--
+ON SCHEDULE EVERY 1 MINUTE STARTS '2018-07-07 18:30:00'         -- Cada cuanto y cuando empieza
+ENDS '2018-07-07 19:00:00'                                      -- Podemos marcar cuando finaliza el evento
+DO INSERT INTO test VALUES ('Evento 1', NOW());                 -- Lo que realiza
 
 :Editar Eventos:
 
-ALTER EVENT insertion_event                                     --Para apagar el evento--
+ALTER EVENT insertion_event                                     -- Para apagar el evento
 DISABLE;
 
-ALTER EVENT nombre_evento                                       --Para restaurar el evento--
+ALTER EVENT nombre_evento                                       -- Para restaurar el evento
 ENABLE;
 
-SET GLOBAL event_scheduler = OFF;                               --Detener todos los eventos--
+SET GLOBAL event_scheduler = OFF;                               -- Detener todos los eventos
 
 :O editarlo de forma completa:
 
 ALTER EVENT insertion_event 
-ON SCHEDULE EVERY 1 MINUTE STARTS 'FECHA DESEADA'               --De igual manera a la creación solo incluyendo ALTER EVENT--                               
+ON SCHEDULE EVERY 1 MINUTE STARTS 'FECHA DESEADA'               -- De igual manera a la creación solo incluyendo ALTER EVENT                               
 DO INSERT INTO test VALUES ('Evento 1', NOW());                 
 
 :Evento complejo modificable:
