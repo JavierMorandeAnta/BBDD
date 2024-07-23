@@ -60,19 +60,19 @@ create index idx_codigo_cliente on cliente(nombre_cliente)
 
 :Configuración y optimizacion para consultas lentas:
 
-show variables like 'slow_query_log%';                                    --Para poder visualizar el estado de las consultas lentas ON/OFF--
+show variables like 'slow_query_log%';                                    -- Para poder visualizar el estado de las consultas lentas ON/OFF
 
-SHOW VARIABLES LIKE 'pid_file';                                           --Podemos ver donde esta el archivo de configuración--
+SHOW VARIABLES LIKE 'pid_file';                                           -- Podemos ver donde esta el archivo de configuración
 
 :En el archivo de configuración my.ini incluimos esta cuestión para poder activarlos:
 
 slow_query_log = 1
 
-slow_query_log_file = /var/log/mysql/mysql-slow.log                       --Podemos especificar la ruta donde se guardan las cuestiones--
+slow_query_log_file = /var/log/mysql/mysql-slow.log                       -- Podemos especificar la ruta donde se guardan las cuestiones
 
-long_query_time = 2                                                       --El tiempo que consideramos una consulta lenta--
+long_query_time = 2                                                       -- El tiempo que consideramos una consulta lenta
 
-log-queries-not-using-indexes                                             --Guarda aquellas consultas que no están haciendo uso de índices--
+log-queries-not-using-indexes                                             -- Guarda aquellas consultas que no están haciendo uso de índices
 
 :Podemos ver estas variables usando workbench:
 
@@ -87,6 +87,3 @@ SET GLOBAL slow_query_log = 1;
 SET GLOBAL long_query_time = 2;
 SET GLOBAL slow_query_log_file = 'C:/mysql/data/slow';
 SET GLOBAL log_queries_not_using_indexes = 1;
-
-
-
