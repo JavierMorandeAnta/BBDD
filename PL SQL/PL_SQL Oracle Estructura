@@ -42,9 +42,9 @@ END IF;
 
 -- Una calculadora con condicionales
 
-CREATE OR REPLACE PROCEDURE Calculadora (operando1 in NUMBER
-                                        ,operando2 in NUMBER
-                                        ,operador  in CHAR)
+CREATE OR REPLACE PROCEDURE Calculadora (operando1  NUMBER
+                                        ,operando2  NUMBER
+                                        ,operador   CHAR)
 IS
 BEGIN
 IF operador ='+' THEN DBMS_OUTPUT.PUT_LINE('La suma de '
