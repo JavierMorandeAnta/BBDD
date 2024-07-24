@@ -9,7 +9,7 @@ END;
 :Podemos crear un procedimiento:
 
 CREATE [OR REPLACE] PROCEDURE nombre_del_procedimiento
-[Parametros...]
+[Parametros..]
 IS
 BLOQUE (sin declare")
 
@@ -56,6 +56,30 @@ ELSIF operador ='-' THEN DBMS_OUTPUT.PUT_LINE('La resta de '
 END IF;
 END;
 /
+
+:Iterativas:
+
+-- FOR
+
+FOR contador IN [REVERSE] inicial..final LOOP
+  Instrucciones
+END LOOP;
+
+-- WHILE
+
+WHILE (condicion) LOOP
+  Instrucciones
+END LOOP;
+
+-- LOOP
+
+LOOP
+  [Instrucciones1]
+  IF (condicion) THEN EXIT;
+  END IF;
+  [Instrucciones2]
+END LOOP;
+
 
 
 
