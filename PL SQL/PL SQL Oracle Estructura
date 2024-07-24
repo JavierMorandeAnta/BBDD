@@ -40,20 +40,22 @@ IF condicion1 THEN instrucciones1
   [  ELSE instrucciones n]
 END IF;
 
-:Una calculadora:
+-- Una calculadora con condicionales
 
-CREATE OR REPLACE PROCEDURE Calculadora (operando1 NUMBER
-                                        ,operando2 NUMBER
-                                        ,operador  CHAR)
+CREATE OR REPLACE PROCEDURE Calculadora (operando1 in NUMBER
+                                        ,operando2 in NUMBER
+                                        ,operador  in CHAR)
 IS
 BEGIN
 IF operador ='+' THEN DBMS_OUTPUT.PUT_LINE('La suma de '
-                                          ||TO_CHAR(operando1)||'+'||TO_CHAR(operando2)
-                                          ||' es: '||TO_CHAR(operando1+operando2)),
+                                          || TO_CHAR(operando1)||' + '||TO_CHAR(operando2)
+                                          ||' es: '|| TO_CHAR(operando1+operando2));
 ELSIF operador ='-' THEN DBMS_OUTPUT.PUT_LINE('La resta de '
-                                          ||TO_CHAR(operando1)||'-'||TO_CHAR(operando2)
-                                          ||' es: '||TO_CHAR(operando1-operando2))
+                                          || TO_CHAR(operando1) ||'-'||TO_CHAR(operando2)
+                                          ||' es: '|| TO_CHAR(operando1-operando2));
 END IF;
 END;
+/
+
 
 
