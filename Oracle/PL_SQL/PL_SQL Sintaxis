@@ -151,6 +151,8 @@ BEGIN
 END;
 /
 
+:Ejemplo Bloque Anonimo:
+
 DECLARE
     p1 INTEGER := 1;
     p2 INTEGER := 2;
