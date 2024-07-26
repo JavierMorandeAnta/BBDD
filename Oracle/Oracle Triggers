@@ -14,3 +14,4 @@ Begin
   FROM dual;                                             -- Usamos la tabla Dual para la operación
 END;
 /
+
