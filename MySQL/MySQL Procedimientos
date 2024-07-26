@@ -63,6 +63,16 @@ delimiter //
  end //
  delimiter ;
 
+:Podemos crear un proceso variable para los libros que cumplen la condición:
 
+ delimiter //
+ create procedure pa_libros_limite_stock(IN pLimite INT)
+ begin
+   select * from libros
+   where stock<=pLimite;
+ end //
+ delimiter ;
+
+call pa_libros_limite_stock(3);
 
 
