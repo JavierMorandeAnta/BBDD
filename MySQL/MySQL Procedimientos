@@ -101,4 +101,57 @@ delimiter ;
 
 call pa_sumar(4,5);
 
-:
+:Estructura condicional Case:
+
+case [variable] 
+  when [valor1] then
+    [instrucciones1]
+  when [valor2] then
+    [instrucciones2]
+  when [valor3] then
+    [instrucciones3]
+  ....
+  else
+    [instrucciones]
+end case;
+
+:Ejemplo:
+
+drop procedure if exists pa_tipo_medalla;
+
+delimiter //
+create procedure pa_tipo_medalla(
+  in puesto int,
+  out tipo varchar(20))
+begin
+  case puesto
+    when 1 then
+      set tipo='oro';
+    when 2 then
+      set tipo='plata';
+    when 3 then
+      set tipo='bronce';
+    else
+      set tipo='Sin trofeo';                        -- Asi comprobariamos si el numero no es 1,2,3 si introducimos otro puesto dara este mensaje
+  end case;          
+end //
+delimiter ;
+
+call pa_tipo_medalla(1,@ti);
+
+select @ti;
+
+:Estructura Case sin variable:
+
+case 
+  when [condición1] then
+    [instrucciones1]
+  when [condición2] then
+    [instrucciones2]
+  when [condición3] then
+    [instrucciones3]
+  ....
+  else
+    [instrucciones]
+end case;
+
