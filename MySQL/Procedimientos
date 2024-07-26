@@ -62,3 +62,7 @@ delimiter //
    where stock<=10;
  end //
  delimiter ;
+
+
+
+
