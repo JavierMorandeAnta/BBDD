@@ -234,5 +234,52 @@ begin
 end //
 delimiter ;
 
+:Llamadas Recursivas:
 
+-- Primero activaremos las llamadas recursivas y el numero maximo de veces que puede hacerse
+SET @@session.max_sp_recursion_depth = 10; 
 
+:Calculara el factorial del numero que le indiquemos:
+
+drop procedure if exists pa_factorial;
+
+delimiter //
+create procedure pa_factorial(
+  in valor int,
+  out resu int)
+begin
+  if valor=0 then
+    set resu=1;
+  else
+    call pa_factorial(valor-1,resu);            -- El procedimiento se llama a si mismo por eso se denomina recursivo
+    set resu=valor*resu;
+  end if;
+end //  
+delimiter ;
+
+DROP PROCEDURE IF EXISTS pa_fibonacci;
+
+DELIMITER //
+
+:Podemos tener una aplicación practica para poder hacer un fibonacci de manera recursiva:
+
+Delimiter //
+create procedure pa_fibonacci(
+in valor int,
+out resu int)
+BEGIN
+	declare resu1 int default 0;
+    declare resu2 int default 0;
+    if Valor=0 then set resu=0;
+    elseif valor=1 then set resu=1;
+    else call pa_fibonacci(valor-1,resu1);
+		 call pa_fibonacci(valor-2,resu2);
+         set resu=resu1+resu2;
+end if;
+end //
+
+Delimiter ;
+
+call pa_fibonacci(3,@resu);
+
+select @resu;
