@@ -155,3 +155,84 @@ case
     [instrucciones]
 end case;
 
+:Estructuras repetitivas- WHILE:
+
+-- La sintaxis es la siguiente
+
+while [condición] do
+  [instrucciones]
+end while;
+
+:Procedimiento que nos retorne dos valores aleatorios distintos comprendidos entre 0 y 10:
+
+drop procedure if exists pa_generar_dos_aleatorios;
+
+delimiter //
+create procedure pa_generar_dos_aleatorios(
+  out valor1 int,
+  out valor2 int)
+begin
+  set valor1=0;                                     -- Previo al while cargamos el valor 0 a cada parámetro
+  set valor2=0;
+  while valor1=valor2 do
+    set valor1=rand()*10;
+    set valor2=rand()*10;
+  end while;
+end //
+delimiter ;
+
+call pa_generar_dos_aleatorios(@v1,@v2);
+
+select @v1,@v2;
+
+:Estructuras repetitivas- REPEAT:
+
+repeat
+  [instrucciones]
+until [condición]                                   -- Seguira hasta que se cumpla esa condicion
+end repeat;
+
+:Podemos hacer el ejemplo anterior para generar 0 y 10 con repeat:
+
+drop procedure if exists pa_generar_dos_aleatorios;
+
+delimiter //
+create procedure pa_generar_dos_aleatorios(
+  out valor1 int,
+  out valor2 int)
+begin
+  repeat
+    set valor1=rand()*10;
+    set valor2=rand()*10;
+  until valor1<>valor2  
+  end repeat;
+end //
+delimiter ;
+
+:Estructuras repetitivas- LOOP:
+
+[etiqueta]:loop                                  -- Marcamos una etiqueta 
+  [instrucciones]
+end loop;
+
+:Podemos hacer el ejemplo anterior para generar 0 y 10 con loop:
+
+drop procedure if exists pa_generar_dos_aleatorios;
+
+delimiter //
+create procedure pa_generar_dos_aleatorios(
+  out valor1 int,
+  out valor2 int)
+begin
+  etiqueta1:loop
+    set valor1=rand()*10;
+    set valor2=rand()*10;
+    if valor1<>valor2 then
+      leave etiqueta1;
+    end if;
+  end loop;
+end //
+delimiter ;
+
+
+
