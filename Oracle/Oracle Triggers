@@ -1,0 +1,19 @@
+:El disparador es un procedimiento que se ejecutara cuando se produzca un evento:
+
+-- Podemos crear un disparador para realizar un Auto_Incremental de una columna
+
+CREATE SEQUENCE "Nombre de la secuencia" START WITH 1;   --  Creamos la secuencia
+
+CREATE OR REPLACE TRIGGER "nombre del trigger"           -- Nombre del disparador
+Before INSERT ON "Nombre de la tabla"
+for each row
+
+Begin 
+  Select "Nombre de la secuencia".NEXTVAL                -- Introducimos el bloque de codigo de PL/SQL
+  Into :new.codigo
+  FROM dual;                                             -- Usamos la tabla Dual para la operación
+END;
+/
+
+
+
