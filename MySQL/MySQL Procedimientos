@@ -1,5 +1,7 @@
 :Usaremos esta database como prueba:
 
+Create database Libreria
+
 drop table if exists libros;
 
 create table libros(
@@ -31,7 +33,6 @@ insert into libros(titulo,autor,editorial,precio,stock)
  insert into libros(titulo,autor,editorial,precio,stock)
   values('Uno','Richard Bach','Planeta',10.00, 120);
 
-
 :Procedimiento almacenado de prueba:
 
 drop procedure if exists pa_libros_limite_stock;
@@ -53,16 +54,6 @@ begin
  INSTRUCCIONES;
 end
 
-:clausula delimiter donde ponemos otro delimitador distinto para saber cuando empieza y acaba:
-
-delimiter //
- create procedure pa_libros_limite_stock()
- begin
-   select * from libros
-   where stock<=10;
- end //
- delimiter ;
-
 :Podemos crear un proceso variable para los libros que cumplen la condición:
 
  delimiter //
@@ -74,5 +65,25 @@ delimiter //
  delimiter ;
 
 call pa_libros_limite_stock(3);
+
+:Parametros Entrada y Salida:
+
+delimiter //
+ create procedure pa_libros_limite_stock(IN pLimite INT
+                                         ,OUT pLibros INT)
+ begin
+  select count(*) INTO pLibros                        -- Contamos el numero de libros
+  From libros
+   where stock<=pLimite;
+
+  Select * From libros                                -- Donde su stock sea el que especifiquemos
+  Where stock<=pLimite;
+ end //
+ delimiter ;
+
+Call pa_libros_limite_stock(10, @pLimite);
+select @pLimite                                       -- Llamamos a esa variable almacenada
+
+
 
 
