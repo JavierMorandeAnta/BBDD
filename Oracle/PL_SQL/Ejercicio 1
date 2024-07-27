@@ -1,4 +1,4 @@
-:Programar un scrpt que nos devuelva la tabla de multiplicar de un numero que es el valor inical al que se assigna la variable "num":
+:Programar un scrpt que nos devuelva la tabla de multiplicar de un numero que es el valor inical al que se asigna la variable "num":
 
 DECLARE 
     i NUMBER :=0;
