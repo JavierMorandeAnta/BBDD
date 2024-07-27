@@ -1,0 +1,14 @@
+:Programar un scrpt que nos devuelva la tabla de multiplicar de un numero que es el valor inical al que se assigna la variable "num":
+
+DECLARE 
+    i NUMBER :=0;
+    inicio NUMBER := 0;
+    final NUMBER :=10;
+    resultado NUMBER :=0;
+    num NUMBER := 4;
+BEGIN
+    FOR i in inicio..final LOOP
+          resultado:= num*i;
+          DBMS_OUTPUT.PUT_LINE('El numero es = ' || num || ' multiplicado por ' || i || ' el resultado es ' ||  resultado);
+    END LOOP;
+END;
