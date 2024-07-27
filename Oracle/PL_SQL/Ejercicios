@@ -1,0 +1,33 @@
+:Programar un scrpt que nos devuelva la tabla de multiplicar de un numero que es el valor inical al que se asigna la variable "num":
+
+DECLARE 
+    i NUMBER :=0;
+    inicio NUMBER := 0;
+    final NUMBER :=10;
+    resultado NUMBER :=0;
+    num NUMBER := 4;
+BEGIN
+    FOR i in inicio..final LOOP
+          resultado:= num*i;
+          DBMS_OUTPUT.PUT_LINE('El numero es = ' || num || ' multiplicado por ' || i || ' el resultado es ' ||  resultado);
+    END LOOP;
+END;
+
+:Función que encuentra el ID de un departamento, siendo el parametro de entrada el nombre del departamento y el valor de retorno el id del departamento, si no existe devuelve nulo:
+
+create or replace NONEDITIONABLE FUNCTION ID_DEPARTAMENTO 
+                        (v_DEPARTMENT_NAME varchar2)                       
+                            RETURN INT 
+AS 
+v_cantidad INT;
+V_ID INT;
+BEGIN
+        Select COUNT(*) into v_cantidad FROM DEPARTMENTS WHERE DEPARTMENT_NAME = v_department_name;
+
+        if v_cantidad = 1 then
+            Select department_id into V_ID from departments where department_name = v_department_name;
+            RETURN V_ID;
+        else
+            return null;
+        end if;
+END ID_DEPARTAMENTO;
