@@ -1,6 +1,6 @@
 :Programar un scrpt que nos devuelva la tabla de multiplicar de un numero que es el valor inical al que se asigna la variable "num":
 
-DECLARE 
+DECLARE                             -- Esto es un ejemplo de bloque anonimo
     i NUMBER :=0;
     inicio NUMBER := 0;
     final NUMBER :=10;
@@ -54,7 +54,48 @@ BEGIN
 
 END F1_COMISSIO; 
 
+:Crear un procedimiento que busca el id del departamento de ventas y el porcentaje de comision mas alta (Usando las funciones anteriores) y encuentra los datos para mostrarlos del trabajador del departamento con la comision mas alta:
 
 
+CREATE OR REPLACE PROCEDURE P1_COMISION_VENTAS
+as
+    v_nom_departamento DEPARTMENTS.DEPARTMENT_NAME%TYPE;
+    v_ID_departamento DEPARTMENTS.DEPARTMENT_ID%TYPE;
+    
+    v_comision_departamento EMPLOYEES.COMMISSION_PCT%type;
+    
+    v_emp employees%rowtype;        -- esta variable es cualquier tipo de dato que contenga la tabla employees
+    
+begin
 
+    /* Busca el id del departamento de ventas Sales */
+    
+    v_nom_departamento:='Sales';
+    
+    v_ID_departamento := ID_DEPARTAMENTO(v_nom_departamento); -- Almacenamos el resultado de la función en una variable
 
+    DBMS_OUTPUT.PUT_LINE( 'El id del departamento Sales sera ' || v_ID_departamento );
+    
+    
+    /* En el id del departamento anterior buscara la comision mas alta de los empleados */
+
+    v_comision_departamento := F1_COMISSIO(v_ID_departamento); -- Llamamos a la funcion con el id resultado de la anterior para que nos de la maxima comissio
+
+    DBMS_OUTPUT.PUT_LINE( 'La comisión mas alta del departamento sera ' || v_comision_departamento);
+    
+    
+    /* Encontrar el trabajador que tiene la comision mas grande y mostrar sus datos */
+    
+    select * into v_emp             -- Realizamos un cursor
+    from employees
+    where department_id=v_ID_departamento and commission_pct=v_comision_departamento
+    
+    fetch first 1 row only;         -- Leemos ese cursor
+
+    dbms_output.put_line('----------------trabajdor de '|| v_nom_departamento ||'----------------');
+    dbms_output.put_line(' NOMBRE: ' || v_emp.FIRST_NAME || ' ' || v_emp.LAST_NAME);                -- Mediante la variable seguido del .columna hacemos referencia a ese dato que tiene el cursor
+    dbms_output.put_line(' EMAIL: ' || v_emp.EMAIL );
+    dbms_output.put_line(' HIRE DATE: ' || v_emp.HIRE_DATE);
+    dbms_output.put_line(' Comisión: ' || v_emp.COMMISSION_PCT*100 ||' % ');
+
+end P1_COMISION_VENTAS;
