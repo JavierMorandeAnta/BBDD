@@ -34,21 +34,29 @@ END ID_DEPARTAMENTO;
 
 :Crea una función a la cual le pasas un id del departamento y te da el maximo comision de ese departamento:
 
-CREATE OR REPLACE FUNCTION F1_COMISSIO(V_DEPARTMENT_ID INT)
-RETURN employees.COMMISSION_PCT%type
+create or replace NONEDITIONABLE FUNCTION F1_COMISSIO(V_DEPARTMENT_ID INT)
+RETURN INT
 AS 
-    v_comission_pct employees.COMMISSION_PCT%type;                  -- con el %type nos referimos al mismo tipo que tiene la columna en nuestra tabla
+    v_comission_pct employees.COMMISSION_PCT%type;
     V_SOLU employees.department_id%type;
+    V_comission_porcentaje INT;
 BEGIN
 
-    SELECT count(*) INTO V_SOLU FROM EMPLOYEES WHERE V_DEPARTMENT_ID = DEPARTMENT_ID; -- Se utiliza el count puesto que de otra manera daria mas de un resultado y no serviria
+    SELECT count(*) INTO V_SOLU FROM EMPLOYEES WHERE V_DEPARTMENT_ID = DEPARTMENT_ID;
 
-    IF V_SOLU>=1 then   -- El select anterior tiene que darte minimo un departamento
-    
-        Select MAX(commission_pct) into v_comission_pct FROM employees where V_DEPARTMENT_ID = DEPARTMENT_ID; -- Con el max dara el maximo de comision 
-        RETURN v_comission_pct;
-        
-    ELSE            -- Si no existe ningun departamento te dara 0
+    IF V_SOLU>=1 then
+
+        Select MAX(commission_pct) into v_comission_pct FROM employees where V_DEPARTMENT_ID = DEPARTMENT_ID;
+        v_comission_porcentaje :=  v_comission_pct *100;
+        RETURN V_comission_porcentaje;
+
+    ELSE
         RETURN 0;
     END IF;
+
 END F1_COMISSIO;
+
+
+
+
+
