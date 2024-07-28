@@ -15,9 +15,9 @@ END;
 
 :Función que encuentra el ID de un departamento, siendo el parametro de entrada el nombre del departamento y el valor de retorno el id del departamento, si no existe devuelve nulo:
 
-create or replace NONEDITIONABLE FUNCTION ID_DEPARTAMENTO 
-                        (v_DEPARTMENT_NAME varchar2)                       
-                            RETURN INT 
+Create or replace NONEDITIONABLE FUNCTION ID_DEPARTAMENTO 
+                                (v_DEPARTMENT_NAME varchar2)                       
+RETURN INT 
 AS 
 v_cantidad INT;
 V_ID INT;
@@ -34,27 +34,25 @@ END ID_DEPARTAMENTO;
 
 :Crea una función a la cual le pasas un id del departamento y te da el maximo comision de ese departamento:
 
-create or replace NONEDITIONABLE FUNCTION F1_COMISSIO(V_DEPARTMENT_ID INT)
-RETURN INT
+Create or replace NONEDITIONABLE FUNCTION F1_COMISSIO(V_DEPARTMENT_ID INT)
+RETURN employees.COMMISSION_PCT%type
 AS 
-    v_comission_pct employees.COMMISSION_PCT%type;    -- con el %type nos referimos al mismo tipo que tiene la columna en nuestra tabla
+    v_comission_pct employees.COMMISSION_PCT%type;  -- con el %type nos referimos al mismo tipo que tiene la columna en nuestra tabla
     V_SOLU employees.department_id%type;
-    V_comission_porcentaje INT;
 BEGIN
 
-    SELECT count(*) INTO V_SOLU FROM EMPLOYEES WHERE V_DEPARTMENT_ID = DEPARTMENT_ID; -- Se utiliza el count puesto que de otra manera daria mas de un resultado y no serviria
+    SELECT count(*) INTO V_SOLU FROM EMPLOYEES WHERE V_DEPARTMENT_ID = DEPARTMENT_ID;  -- Se utiliza el count puesto que de otra manera daria mas de un resultado y no serviria
 
     IF V_SOLU>=1 then -- El select anterior tiene que darte minimo un departamento
 
         Select MAX(commission_pct) into v_comission_pct FROM employees where V_DEPARTMENT_ID = DEPARTMENT_ID; -- Con el max dara el maximo de comision 
-        v_comission_porcentaje :=  v_comission_pct *100;
-        RETURN V_comission_porcentaje;
+        RETURN v_comission_pct;
 
     ELSE -- Si no existe ningun departamento te dara 0
         RETURN 0;
     END IF;
 
-END F1_COMISSIO;
+END F1_COMISSIO; 
 
 
 
