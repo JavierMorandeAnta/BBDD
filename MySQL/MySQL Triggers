@@ -122,3 +122,57 @@ delimiter //
  delete from ventas where numero=1;
  
  select * from libros;
+
+:Podemos crear una database llamada "Auditoria" con las mismas tablas de ventas + una para guardar la fecha, en esa database guardaremos todos los cambios:
+
+:Para cuando inserte un dato:
+
+DELIMITER //
+
+CREATE TRIGGER AFTER_INSERT_Auditoria  
+AFTER INSERT ON ventas  
+FOR EACH ROW  
+BEGIN      
+ INSERT INTO auditoria.auditoria (numero, codigolibro, precio, cantidad, fechamod)    
+ VALUES (new.numero, new.codigolibro, new.precio, new.cantidad, now());  
+
+ END;
+
+DELIMITER ;
+
+:Para cuando haga un update:
+
+DELIMITER //
+
+CREATE TRIGGER before_update_Auditoria  
+BEFORE UPDATE ON ventas  
+FOR EACH ROW  
+BEGIN       
+
+ INSERT INTO auditoria.auditoria (numero, codigolibro, precio, cantidad, fechamod)    
+ VALUES (OLD.numero, OLD.codigolibro, OLD.precio, OLD.cantidad, now()); 
+
+ INSERT INTO auditoria_db.auditoria (numero, codigolibro, precio, cantidad, fechamod)    
+ VALUES (NEW.numero, NEW.codigolibro, NEW.precio, NEW.cantidad, NOW());  
+
+ END;
+
+DELIMITER ;
+
+:Para cuando haga Delete:
+
+DELIMITER //
+
+CREATE TRIGGER AFTER_DELETE_Auditoria  
+AFTER DELETE ON ventas  
+FOR EACH ROW  BEGIN       
+INSERT INTO auditoria.auditoria (numero, codigolibro, precio, cantidad, fechamod)    
+ VALUES (OLD.numero, OLD.codigolibro, OLD.precio, OLD.cantidad, now());  
+ END;
+
+DELIMITER ;
+
+
+:Si empleamos un usuario distinto a root deberemos darle los permisos de insercion a la nueva database:
+
+grant insert on auditoria.auditoria to usuario;
