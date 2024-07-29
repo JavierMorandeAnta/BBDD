@@ -29,6 +29,3 @@ END //
 /* Aqui llamamos a el procedimiento realizado anteriormente *\
 DELIMITER ;
 Call insertar_1000000_filas();
-
-:Podemos usar este programa que ya viene en MYsql llamado mysqldumpslow en la carpeta de instalación que nos permite ordenar y manejar el fichero SLOW-LOG:
-
