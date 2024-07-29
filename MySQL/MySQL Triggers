@@ -8,3 +8,53 @@ create trigger nombre-del-trigger
 begin
  instrucciones-sql;
 end
+
+:Ejemplo Trigger:
+
+/* creamos las tablas de prueba */
+
+create table usuarios(
+ nombre varchar(30),
+ clave varchar(30),
+ primary key (nombre)
+);
+
+create table clavesanteriores(
+ numero int auto_increment,
+ nombre varchar(30),
+ clave varchar(30),
+ primary key (numero)
+);
+
+/* Con este Trigger cada vez que el usuario cambia su clave se hara una copia de la clave anterior en "Claves anteriores" */
+
+delimiter //
+create trigger before_usuarios_update
+  before update
+  on usuarios
+  for each row
+begin
+  insert into clavesanteriores(nombre, clave) values (old.nombre, old.clave); -- Las palabras claves 'old' y 'new' contienen los valores actuales de la fila y los valores que se actualizarán
+end //
+delimiter ;
+
+:Podemos comprobar que funcione:
+
+insert into usuarios(nombre,clave) values ('marcos','123abc'); -- El trigger no saltara ya que esta configurado para solo saltar en caso de update
+
+update usuarios set clave='999zzz' where nombre='marcos';
+
+:Podemos añadir una tabla que se llame fecha a clavesateriores y modificando el trigger de la siguiente manera tambien guardar cuando se hace el cambio de clave:
+
+delimiter //
+create trigger before_usuarios_update
+  before update
+  on usuarios
+  for each row
+begin
+  insert into clavesanteriores(nombre, clave, Fecha) values (old.nombre, old.clave, now()); 
+end //
+delimiter ;
+
+
+
