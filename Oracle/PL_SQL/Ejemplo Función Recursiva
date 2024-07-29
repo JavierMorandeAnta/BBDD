@@ -1,0 +1,9 @@
+:Podemos hacer el factorial de un numero:
+
+CREATE OR REPLACE FUNCTION factorial(pNumero INTEGER) RETURN INTEGER IS
+BEGIN
+  IF (pNumero=0) then return 1;
+  elsif (pNumero=1) then return 1;
+  else return pNumero*Factorial (pNumero-1);
+END IF;
+END factorial;
