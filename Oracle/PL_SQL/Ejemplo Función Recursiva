@@ -1,12 +1,10 @@
 :Podemos hacer el factorial de un numero:
 
 CREATE OR REPLACE FUNCTION factorial(pNumero INTEGER) RETURN INTEGER IS
-  negativo EXCEPTION
 BEGIN
-  IF (pNumero<0) THEN RAISE negativo
-  IF (pNumero=0) then return 1;
+  IF (pNumero<0) THEN RETURN -1;
+  ELSIF (pNumero=0) then return 1;
   elsif (pNumero=1) then return 1;
   else return pNumero*Factorial (pNumero-1);
 END IF;
-WHEN NEGATIVO THEN RETURN -1;
 END factorial;
