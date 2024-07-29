@@ -1,1 +1,10 @@
+:La sintaxis de un trigger es:
 
+create trigger nombre-del-trigger
+  [before / after]          -- Mediante before (antes), after (después) indicamos en que momento se ejecutará el bloque del trigger
+[insert / delete / update]  -- Indicamos para con cual comando SQL se invocará el trigger con INSERT, UPDATE o DELETE.
+  on nombre-de-la-tabla     -- En que tabla lo hara
+  for each row
+begin
+ instrucciones-sql;
+end
