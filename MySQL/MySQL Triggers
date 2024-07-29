@@ -56,5 +56,69 @@ begin
 end //
 delimiter ;
 
+:Podemos comprobar que funcione:
 
+update usuarios set clave='123456' where nombre='marcos'; -- Podemos probar que efectivamente guarde tambien la fecha y la clave anterior
 
+:Sobre la tabla libros y ventas:
+
+create table libros(
+  codigo int auto_increment,
+  titulo varchar(50),
+  autor varchar(50),
+  editorial varchar(30),
+  precio float, 
+  stock int,
+  primary key (codigo)
+ );
+
+ create table ventas(
+  numero int auto_increment,
+  codigolibro int,
+  precio float,
+  cantidad int,
+  primary key (numero)
+ );
+
+-- Con estos datos
+
+ insert into libros(titulo, autor, editorial, precio, stock)
+  values('Uno','Richard Bach','Planeta',15,100);   
+ insert into libros(titulo, autor, editorial, precio, stock)
+  values('Ilusiones','Richard Bach','Planeta',18,50);
+ insert into libros(titulo, autor, editorial, precio, stock)
+  values('El aleph','Borges','Emece',25,200);
+ insert into libros(titulo, autor, editorial, precio, stock)
+  values('Aprenda PHP','Mario Molina','Emece',45,200);
+
+:Creamos un trigger que nos actualize el stock disponible cada vez que se hace una venta:
+
+delimiter //
+ create trigger before_ventas_insert
+   before insert
+   on ventas
+   for each row
+ begin
+   update libros set stock=libros.stock-new.cantidad
+     where new.codigolibro=libros.codigo; 
+ end //
+ delimiter ;
+
+:Podemos crear uno igual para cuando hace delete invirtiendo el codigo para añadirle uno de stok:
+
+ delimiter //
+ create trigger before_ventas_delete
+   before delete
+   on ventas
+   for each row
+ begin
+  update libros set stock=libros.stock+old.cantidad
+     where old.codigolibro=libros.codigo;   
+ end //
+ delimiter ;
+
+:Podemos comprobar que el stok vuelve a añadirse simplemente al borrar la venta:
+
+ delete from ventas where numero=1;
+ 
+ select * from libros;
