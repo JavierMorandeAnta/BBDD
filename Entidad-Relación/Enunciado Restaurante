@@ -1,0 +1,28 @@
+Un restaurante de comida rápida sirve pedidos en el local. Cada pedido puede
+incluir uno o varios artículos y productos especiales. Un artículo lleva uno o
+varios ingredientes. Los productos especiales son ofertas del restaurante,
+aparte de llevar los ingredientes del artículo sobre el que se basa, lleva uno o
+varios ingredientes adicionales.
+
+• El restaurante, además de atender pedidos en el local, quiere ofrecer un
+nuevo servicio de envío de pedidos a domicilio. Para dichos pedidos
+interesa guardar la dirección y el teléfono de contacto del solicitante del
+pedido. Se aceptan anulaciones de pedidos, pero la información de un
+domicilio se guardará aunque se haya anulado el pedido solicitado. ¿Qué
+cambiarías en el esquema E/R (añadir/eliminar/modificar) para incluir la
+información relativa a domicilios?
+• Como se desprende del esquema E/R anterior, cada artículo lleva uno o
+más ingredientes y un ingrediente puede estar en más de un artículo.
+Ahora nos plantean la siguiente situación:
+– En el restaurante hay ingredientes que pueden sustituirse por otros.
+Por ejemplo en ocasiones la lechuga se sustituye bien por cogollos o
+bien por escarola.
+– Puede coincidir que dos ingredientes distintos se sustituyan por el
+mismo ingrediente. Por ejemplo los espaguetis y los macarrones
+suelen sustituirse por tallarines.
+– Sin embargo las sustituciones no son generales, sino que se aplican
+de forma diferente para cada artículo. Por ejemplo, en las pizzas los
+champiñones se sustituyen por setas o por hongos, mientras que en
+las ensaladas se sustituyen por maíz o por hongos.
+• ¿Qué cambiarías en el esquema E/R (añadir/eliminar/modificar) para
+incluir la información relativa a sustitución de ingredientes? 
