@@ -1,0 +1,31 @@
+Ejercicio: BUQUES
+
+
+Se quieren registrar las visitas a puertos realizadas por
+los buques. Partiendo de los requisitos de datos
+siguientes, diseña el diagrama ER:
+• Cada buque se identifica con su nombre. Además
+interesa almacenar el nombre del dueño, qué tipo de
+buque es y la historia de movimientos realizados.
+• Cada tipo de buque consta de un código único. Se
+desea guardar también el tonelaje y el material del
+casco. Puede haber varios buques del mismo tipo.
+• Por cada movimiento realizado por un buque se guarda
+la longitud y latitud, y una marca temporal formada por
+una fecha y una hora.
+• Cada buque está adscrito a un puerto, desde el que
+inicia todas sus visitas. Cada puerto tiene un nombre,
+una descripción, el país al que pertenece y el mar
+donde se ubica. En ningún país puede haber 2 puertos
+de igual nombre. Sin embargo hay puertos con el
+mismo nombre correspondientes a países distintos.
+• Se guarda el nombre y continente de cada país y el
+nombre y profundidad media de cada mar. En ambos
+casos, el nombre identifica unívocamente al país y mar
+respectivamente.
+• Por cada visita de un buque a un puerto interesa
+guardar la fecha en la que arribó al puerto (fecha de
+inicio) y la fecha de partida (fecha fin). Un buque
+puede visitar muchas veces el mismo puerto. Si un
+buque entra al mismo puerto varias veces el mismo día
+sólo se almacena la última visita del día
