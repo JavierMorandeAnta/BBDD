@@ -1,0 +1,14 @@
+1) Obtener todos los detalles de todos los artículos de CACERES. 
+σCIUDAD='CACERES' ARTICULOS
+
+2) Obtener todos los valores de P# para los proveedores que abastecen el artículo T1
+πP σT='T1'ENVIOS
+
+3) Obtener la lista de pares de atributos (COLOR, CIUDAD) de la tabla componentes
+eliminando los pares duplicados.
+
+πCOLOR,CIUDAD (COMPONENTES)
+
+4) Obtener de la tabla de artículos los valores de T# y CIUDAD donde el nombre de la
+ciudad acaba en D o contiene al menos una E. 
+
