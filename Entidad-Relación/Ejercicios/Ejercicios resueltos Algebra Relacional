@@ -12,3 +12,39 @@ eliminando los pares duplicados.
 4) Obtener de la tabla de artículos los valores de T# y CIUDAD donde el nombre de la
 ciudad acaba en D o contiene al menos una E. 
 
+πT,CIUDAD σ(CIUDAD LIKE '%D' OR CIUDAD LIKE '%E%')ARTICULOS
+
+5) Obtener los valores de P# para los proveedores que suministran para el artículo T1 el
+componente C1.
+
+πP(σT='T1' ∧ C='C1'(ENVIOS))
+
+6) Obtener los valores de TNOMBRE en orden alfabético para los artículos
+abastecidos por el proveedor P1.
+
+τTNOMBRE
+
+πTNOMBRE ARTICULOS ⨝ (σP='P1' ENVIOS)
+
+7) Obtener los valores de C# para los componentes suministrados para cualquier artículo de
+MADRID.
+
+πC (ENVIOS ⨝ σCIUDAD='MADRID' ARTICULOS) 
+
+8) Obtener todos los valores de C# de los componentes tales que ningún otro componente
+tenga un valor de peso inferior.
+
+πC COMPONENTES
+-
+πT2.C σT1.PESO<T2.PESO (ρT1 COMPONENTES ⨯ ρT2 COMPONENTES)
+
+9) Obtener los valores de P# para los proveedores que suministren los artículos T1 y T2.
+
+πP σT='T1' ENVIOS
+∩
+πP σT='T2' ENVIOS
+
+10) Obtener los valores de P# para los proveedores que suministran para un artículo de
+SEVILLA o MADRID un componente ROJO.
+
+πP(ρT1 (σCOLOR='ROJO' COMPONENTES ⨝ ENVIOS) ⨝ T1.T=T2.T ρT2 σCIUDAD='MADRID' OR CIUDAD='SEVILLA' ARTICULOS)
